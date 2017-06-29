@@ -1,4 +1,3 @@
-
 function setFormAction(formId, action) {
     $('#' + formId).attr('action', action);
 }

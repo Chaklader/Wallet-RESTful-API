@@ -1,5 +1,8 @@
 package mobi.puut.database;
 
+/**
+ * Created by Chaklader on 6/19/17.
+ */
 
 import mobi.puut.entities.User;
 import org.hibernate.HibernateException;
@@ -15,7 +18,6 @@ import java.util.List;
  */
 @Repository
 public class UserDaoHibernate extends HibernateDaoSupport implements UserDao {
-
     /**
      * @param user wallet user such as balance, address, transaction history and id of the user
      * @return true if the creation of the user is successful, otherwise, return false.

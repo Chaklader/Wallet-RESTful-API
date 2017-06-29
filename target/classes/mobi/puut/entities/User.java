@@ -34,8 +34,8 @@ public class User {
     }
 
     @Id
-    @Column
     @GeneratedValue
+    @Column
     public int getId() {
         return id;
     }

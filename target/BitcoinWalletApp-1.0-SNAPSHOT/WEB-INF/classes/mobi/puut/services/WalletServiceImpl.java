@@ -2,7 +2,6 @@ package mobi.puut.services;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
-//import mobi.puut.controllers.WalletManager;
 import mobi.puut.controllers.WalletManager;
 import mobi.puut.controllers.WalletModel;
 import mobi.puut.database.StatusDao;
@@ -25,13 +24,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static mobi.puut.controllers.WalletManager.networkParameters;
-
 /**
- * Created by Chaklader on 6/23/17.
+ * Created by Valeriy Kotenok on 23-Jun-17.
  */
 @Service
 public class WalletServiceImpl implements WalletService {
+    private static NetworkParameters params = MainNetParams.get();
+    private Map<String, WalletManager> genWalletMap = new ConcurrentHashMap<>();
+    private Map<Long, WalletManager> walletMangersMap = new ConcurrentHashMap<>();
 
     @Autowired
     private WalletInfoDao walletInfoDao;
@@ -41,10 +41,6 @@ public class WalletServiceImpl implements WalletService {
 
     @Autowired
     private StatusDao statusDao;
-
-    private Map<String, WalletManager> genWalletMap = new ConcurrentHashMap<>();
-
-    private Map<Long, WalletManager> walletMangersMap = new ConcurrentHashMap<>();
 
     @Override
     public List<WalletInfo> getAllWallets() {
@@ -59,13 +55,9 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public synchronized void generateAddress(final String walletName) {
-
         WalletInfo walletInfo = walletInfoDao.getByName(walletName);
-
         if (walletInfo == null) {
-
             if (genWalletMap.get(walletName) == null) {
-
                 final WalletManager walletManager = WalletManager.setupWallet(walletName);
                 walletManager.addWalletSetupCompletedListener((wallet) -> {
                     Address address = wallet.currentReceiveAddress();
@@ -81,9 +73,8 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public WalletModel getWalletModel(final Long id) {
-
         WalletManager walletManager = getWalletManager(id);
-        WalletModel model = walletManager == null ? null :  walletManager.getModel();
+        WalletModel model = walletManager == null ? null : walletManager.getModel();
         return model;
     }
 
@@ -91,18 +82,13 @@ public class WalletServiceImpl implements WalletService {
     public WalletModel sendMoney(final Long walletId, final String amount, final String address) {
 
         User user = getCurrentUser();
-
         WalletModel model = null;
-
         WalletManager walletManager = getWalletManager(walletId);
-
         if (walletManager != null) {
-
             Wallet wallet = walletManager.getBitcoin().wallet();
             send(user, walletId, wallet, address, amount);
             model = walletManager.getModel();
         }
-
         return model;
     }
 
@@ -122,7 +108,7 @@ public class WalletServiceImpl implements WalletService {
         Coin balance = wallet.getBalance();
         try {
             Coin amount = parseCoin(amountStr);
-            Address destination = Address.fromBase58(networkParameters, address);
+            Address destination = Address.fromBase58(params, address);
 
             SendRequest req;
             if (amount.equals(balance))
@@ -182,7 +168,7 @@ public class WalletServiceImpl implements WalletService {
     protected Status saveTransaction(final User user, final Long walletId, final String address,
                                      final String message, final Coin balance) {
         Status status = new Status();
-        status.setAddress(address.length() > 90 ? address.substring(0, 89) : address );
+        status.setAddress(address.length() > 90 ? address.substring(0, 89) : address);
         status.setUser_id(user.getId());
         status.setWallet_id(walletId);
         status.setTransaction(message.length() > 90 ? message.substring(0, 89) : message);

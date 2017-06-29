@@ -18,7 +18,6 @@
         <param-value>
             classpath:mobi/puut/config/database-context.xml
             classpath:mobi/puut/config/service-context.xml
-            <!--classpath:mobi/puut/config/security-context.xml-->
         </param-value>
     </context-param>
 

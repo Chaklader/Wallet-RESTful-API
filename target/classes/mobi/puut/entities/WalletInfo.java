@@ -3,21 +3,19 @@ package mobi.puut.entities;
 import javax.persistence.*;
 
 /**
- * Created by Chaklader on 6/23/17.
+ * Created by Valeriy Kotenok on 23-Jun-17.
  */
 @Entity
 @Table(name = "wallet_info")
 public class WalletInfo {
 
     private Long id;
-
     private String name;
-
     private String address;
 
     @Id
-    @Column
     @GeneratedValue
+    @Column
     public Long getId() {
         return id;
     }

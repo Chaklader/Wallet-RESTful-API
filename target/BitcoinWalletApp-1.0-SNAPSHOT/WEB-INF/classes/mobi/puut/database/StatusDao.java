@@ -5,7 +5,7 @@ import mobi.puut.entities.Status;
 import java.util.List;
 
 /**
- * Created by Chaklader on 6/23/17.
+ * Created by Valeriy Kotenok on 24-Jun-17.
  */
 public interface StatusDao {
 

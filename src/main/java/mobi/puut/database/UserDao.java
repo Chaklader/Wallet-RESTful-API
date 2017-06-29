@@ -1,5 +1,8 @@
 package mobi.puut.database;
 
+/**
+ * Created by Chaklader on 6/19/17.
+ * */
 import java.util.List;
 import mobi.puut.entities.User;
 
@@ -13,5 +16,6 @@ public interface UserDao {
     List<User> getAllUsers();
 
     void saveOrUpdate(User user);
+
 }
 

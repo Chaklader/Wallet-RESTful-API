@@ -13,8 +13,8 @@ import mobi.puut.entities.User;
 /**
  * Created by Chaklader on 6/19/17.
  */
-@Transactional
 @Service("userService")
+@Transactional
 public class UserService {
 
     @Autowired

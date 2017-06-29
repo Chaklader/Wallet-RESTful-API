@@ -1,8 +1,5 @@
 package mobi.puut.controllers;
 
-
-import java.util.*;
-
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.Transaction;
@@ -11,7 +8,7 @@ import org.bitcoinj.utils.MonetaryFormat;
 import org.bitcoinj.wallet.Wallet;
 import org.bitcoinj.wallet.listeners.WalletChangeEventListener;
 
-import static mobi.puut.controllers.WalletManager.networkParameters;
+import java.util.*;
 
 /**
  * Created by Chaklader on 6/12/17.
@@ -53,16 +50,13 @@ public class WalletModel {
     private List<String> history = new ArrayList<>();
 
     public List<String> getHistory() {
-
         for (Transaction t : transactions) {
             history.add(addTransactionHistory(t));
         }
-
         return history;
     }
 
-    public WalletModel() {
-    }
+    public WalletModel() {}
 
     public WalletModel(Wallet wallet) {
         setWallet(wallet);
@@ -74,15 +68,12 @@ public class WalletModel {
 
         this.address = wallet.currentReceiveAddress();
 
-        transactions.addAll(wallet.getRecentTransactions(100,
-                true));
+        transactions.addAll(wallet.getRecentTransactions(100, false));
 
-        this.transaction = Objects.isNull(transactions) || transactions.isEmpty()
-                ? "" : String.valueOf(transactions.get(0));
+        this.transaction = "";
     }
 
     public boolean setWallet(Wallet wallet) {
-
         try {
             wallet.addChangeEventListener(new WalletChangeEventListener() {
                 @Override
@@ -95,7 +86,6 @@ public class WalletModel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return false;
     }
 
@@ -159,7 +149,7 @@ public class WalletModel {
             String message = "Incoming payment of " + MonetaryFormat.BTC.format(value);
             return message;
         } else if (value.isNegative()) {
-            Address address = transaction.getOutput(0).getAddressFromP2PKHScript(networkParameters);
+            Address address = transaction.getOutput(0).getAddressFromP2PKHScript(WalletManager.networkParameters);
             String message = "Outbound payment to " + address + " worth of " +
                     (MonetaryFormat.BTC.format(value)).toString().replaceAll("-", "");
             return message;

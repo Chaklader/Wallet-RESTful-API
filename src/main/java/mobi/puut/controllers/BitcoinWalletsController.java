@@ -1,5 +1,6 @@
 package mobi.puut.controllers;
 
+
 import mobi.puut.entities.WalletInfo;
 import mobi.puut.services.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 
+/**
+ * Created by Chaklader on 6/24/17.
+ */
 @Controller
 public class BitcoinWalletsController {
 
@@ -22,7 +26,7 @@ public class BitcoinWalletsController {
     public String showBitcoinWallet(final Model model) {
         List<WalletInfo> wallets = walletService.getAllWallets();
         model.addAttribute("wallets", wallets);
-        return "landing";
+        return "main";
     }
 
     @RequestMapping(value = "/generateAddress", method = RequestMethod.POST)
@@ -61,8 +65,7 @@ public class BitcoinWalletsController {
         WalletModel walletModel = walletService.sendMoney(id, amount, address);
         model.addAttribute("walletModel", walletModel);
         model.addAttribute("wallet_id", id);
-
         return "sendMoney";
-//         return "sucess";
     }
+
 }

@@ -1,6 +1,7 @@
 <%@ page import="mobi.puut.controllers.WalletModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="mobi.puut.controllers.WalletModel" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.util.List" %>
 <html>
@@ -19,8 +20,6 @@
     List<String> history = walletModel.getHistory();
     DecimalFormat decimalFormat = new DecimalFormat("#0.0000");
 %>
-
-
 <body class="page_container">
 <div class="wallets_page">
 
@@ -53,6 +52,7 @@
         <% }
         }%>
     </div>
+
 
     <div class="status_line">
         <%=  walletModel.isSyncFinished() ? "Synchronized" : "Synchronizing to the block chain ..."%>

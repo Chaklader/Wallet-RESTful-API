@@ -1,31 +1,30 @@
 
-  Bitcoin Wallet App
-  ------------------
+Bitcoin Wallet App
+------------------
 
-  What is it?
-  -----------
+What is it?
+-----------
 
-  Bitcoin wallet application to generate multiple wallets (e.g
-  addresses), to check balanace, transaction history and send
-  money from the wallet to external wallet.
+Bitcoin wallet application to generate multiple wallets (e.g addresses) with functionality such as
+balanace checking, transaction history and send money from the wallet to external wallet.
 
-  The Latest Version
-  ------------------
+The Latest Version
+------------------
 
-  Documentation
-  -------------
+Documentation
+-------------
 
-  Installation
-  ------------
-
-
-  Licensing
-  ---------
-
-  Cryptographic Software Notice
-  -----------------------------
+Installation
+------------
 
 
-  Contacts
-  --------
+Licensing
+---------
+
+Cryptographic Software Notice
+-----------------------------
+
+
+Contacts
+--------
 

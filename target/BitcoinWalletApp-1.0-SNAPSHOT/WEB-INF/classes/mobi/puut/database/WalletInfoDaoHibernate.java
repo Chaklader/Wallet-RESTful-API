@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by Chaklader on 6/23/17.
+ * Created by Valeriy Kotenok on 23-Jun-17.
  */
 @Repository
 public class WalletInfoDaoHibernate

@@ -1,7 +1,6 @@
 <%@ page import="mobi.puut.controllers.WalletModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="mobi.puut.controllers.WalletModel" %>
 <%@ page import="java.text.DecimalFormat" %>
 <html>
 <head>
@@ -14,7 +13,6 @@
             integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </head>
-
 <%
     WalletModel walletModel = (WalletModel) request.getAttribute("walletModel");
     DecimalFormat decimalFormat = new DecimalFormat("#0.0000");
@@ -30,18 +28,20 @@
                 <div class="fild_value">
                 <%= decimalFormat.format(walletModel.getBalanceFloatFormat()) %>&nbsp; BTC
                 </div>
-            </div>
+            </div
             </br>
             <div class="address_row">
                 <%= walletModel.getAddress() != null ? walletModel.getAddress().toString() : "Getting the address ..."%>
             </div>
         </div>
     </div>
+
 </div>
+
 </body>
 
-
 <script>
+
     <% if(walletModel.getAddress() == null) {%>
     setTimeout(function () {
         window.location.reload(1);

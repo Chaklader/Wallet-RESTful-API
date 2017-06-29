@@ -5,7 +5,7 @@ import mobi.puut.entities.WalletInfo;
 import java.util.List;
 
 /**
- * Created by Chaklader on 6/23/17.
+ * Created by Chaklader on 6/24/17.
  */
 public interface WalletInfoDao {
     List<WalletInfo> getAllWallets();

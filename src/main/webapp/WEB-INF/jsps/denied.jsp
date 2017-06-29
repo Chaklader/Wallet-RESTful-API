@@ -11,6 +11,6 @@
     <title>Error Page</title>
 </head>
 <body>
-<h2>Some Error</h2>
+<h2 style="text-align: center">Some Error</h2>
 </body>
 </html>
