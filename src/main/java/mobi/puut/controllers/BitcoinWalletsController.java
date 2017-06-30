@@ -29,6 +29,11 @@ public class BitcoinWalletsController {
         return "main";
     }
 
+    /**
+     *
+     * @param walletName accept walletName and generate the requested wallet
+     * @return redirects to the landing page
+     */
     @RequestMapping(value = "/generateAddress", method = RequestMethod.POST)
     public String generateAddress(final @RequestParam String walletName) {
         walletService.generateAddress(walletName);

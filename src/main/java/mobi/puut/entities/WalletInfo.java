@@ -1,6 +1,7 @@
 package mobi.puut.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Chaklader on 6/24/17.
@@ -9,13 +10,20 @@ import javax.persistence.*;
 @Table(name = "wallet_info")
 public class WalletInfo {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue
     private Long id;
+
+    @NotNull
+    @Column(name = "name")
     private String name;
+
+    @NotNull
+    @Column(name = "address")
     private String address;
 
-    @Id
-    @GeneratedValue
-    @Column
+
     public Long getId() {
         return id;
     }
@@ -24,7 +32,6 @@ public class WalletInfo {
         this.id = id;
     }
 
-    @Column
     public String getName() {
         return name;
     }
@@ -33,7 +40,6 @@ public class WalletInfo {
         this.name = name;
     }
 
-    @Column
     public String getAddress() {
         return address;
     }

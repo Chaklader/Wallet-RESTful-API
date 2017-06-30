@@ -30,16 +30,6 @@
                     <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                     <prop key="hibernate.hbm2ddl.auto">create</prop>
                     <prop key="hibernate.show_sql">true</prop>
-
-                    <!--<prop key="javax.persistence.validation.group.pre-create">-->
-                    <!--com.puut.bitcoin.entities.PersistenceValidationGroup-->
-                    <!--</prop>-->
-                    <!--<prop key="javax.persistence.validation.group.pre-update">-->
-                    <!--com.puut.bitcoin.entities.PersistenceValidationGroup-->
-                    <!--</prop>-->
-                    <!--<prop key="javax.persistence.validation.group.pre-remove">-->
-                    <!--com.puut.bitcoin.entities.PersistenceValidationGroup-->
-                    <!--</prop>-->
                 </props>
             </property>
 
@@ -55,8 +45,7 @@
             <property name="dataSource" ref="dataSource"></property>
         </bean>
 
-        <tx:annotation-driven/>
-        <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
+        <tx:annotation-driven transaction-manager="transactionManager"/>
 
         <bean id="exceptionTranslator"
               class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor">

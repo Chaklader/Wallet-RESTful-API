@@ -11,9 +11,14 @@ import javax.validation.constraints.Size;
 @Table(name = "users")
 public class User {
 
+    @Id
+    @Column
     @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @NotNull
+    @Column(name = "name")
     @Size(min = 5, max = 45, message = "Name must be between 5 and 45 characters.")
     private String name;
 
@@ -21,21 +26,16 @@ public class User {
 
     }
 
-    public User(@Size(min = 5, max = 45, message = "Name must be between 5 and 45 characters.") String name) {
-
-        this.name = name;
-    }
-
     public User(int id, String name) {
-
         super();
         this.id = id;
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue
-    @Column
+    public User(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
@@ -44,7 +44,6 @@ public class User {
         this.id = id;
     }
 
-    @Column
     public String getName() {
         return name;
     }

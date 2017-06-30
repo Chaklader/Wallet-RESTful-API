@@ -20,21 +20,28 @@ import java.util.List;
  */
 public class WalletManager {
 
-     // public static NetworkParameters networkParameters = MainNetParams.get();
-    public static NetworkParameters networkParameters = TestNet3Params.get();
-    public static final String APP_NAME = "WalletTemplate";
-    public static final String WALLET_FILE_NAME = APP_NAME.replaceAll("[^a-zA-Z0-9.-]", "_")
-            + networkParameters.getPaymentProtocolId();
-    private static final Logger logger = LoggerFactory.getLogger(WalletManager.class);
+    public static WalletAppKit bitcoin;
 
     private WalletModel model = new WalletModel();
-    public static WalletAppKit bitcoin;
+
+    // public static NetworkParameters networkParameters = MainNetParams.get();
+    public static NetworkParameters networkParameters = TestNet3Params.get();
+
+    public static final String APP_NAME = "WalletTemplate";
+
+    public static final String WALLET_FILE_NAME = APP_NAME.replaceAll("[^a-zA-Z0-9.-]", "_")
+            + networkParameters.getPaymentProtocolId();
+
+    private static final Logger logger = LoggerFactory.getLogger(WalletManager.class);
+
     private List<WalletSetupCompletedListener> setupCompletedListeners = Collections.synchronizedList(new LinkedList<>());
 
     public static WalletManager setupWallet(final String walletName) {
+
         logger.info("Setup Wallet");
         WalletManager walletManager = new WalletManager();
         walletManager.setupWalletKit(walletName);
+
         try {
             if (walletManager.bitcoin.isChainFileLocked()) {
                 return walletManager;
@@ -48,10 +55,14 @@ public class WalletManager {
         return walletManager;
     }
 
-    private WalletManager() {
-    }
+    private WalletManager() {}
 
+    /**
+     * @param walletId takes wallet ID and generate the directory for the wallet
+     * @return reutrn the file direcotry
+     */
     protected File getWalletDirectory(final String walletId) {
+
         File dir = new File(walletId);
         if (!dir.exists()) {
             dir.mkdir();
@@ -59,9 +70,27 @@ public class WalletManager {
         return dir;
     }
 
+    public WalletAppKit getBitcoin() {
+        return bitcoin;
+    }
+
+    public WalletModel getModel() {
+        return model;
+    }
+
+    public void addWalletSetupCompletedListener(final WalletSetupCompletedListener listener) {
+        setupCompletedListeners.add(listener);
+    }
+
+
+    /**
+     *
+     * @param walletId set up the wallet for the provided wallet ID
+     */
     private void setupWalletKit(final String walletId) {
 
         File directory = getWalletDirectory(walletId);
+
         // if the seed is not null, that means we are restoring from the backup
         bitcoin = new WalletAppKit(networkParameters, directory, WALLET_FILE_NAME) {
 
@@ -88,18 +117,5 @@ public class WalletManager {
         bitcoin.setDownloadListener(model.getSyncProgressUpdater())
                 .setBlockingStartup(false)
                 .setUserAgent(APP_NAME, "1.0");
-
-    }
-
-    public WalletAppKit getBitcoin() {
-        return bitcoin;
-    }
-
-    public WalletModel getModel() {
-        return model;
-    }
-
-    public void addWalletSetupCompletedListener(final WalletSetupCompletedListener listener) {
-        setupCompletedListeners.add(listener);
     }
 }

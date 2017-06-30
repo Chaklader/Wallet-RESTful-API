@@ -1,9 +1,5 @@
 package mobi.puut.database;
 
-/**
- * Created by Chaklader on 6/19/17.
- */
-
 import mobi.puut.entities.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -12,85 +8,98 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Chaklader on 6/13/17.
  */
 @Repository
 public class UserDaoHibernate extends HibernateDaoSupport implements UserDao {
+
     /**
-     * @param user wallet user such as balance, address, transaction history and id of the user
+     * @param user takes the wallet user as argument
      * @return true if the creation of the user is successful, otherwise, return false.
      */
     public boolean create(User user) {
+
+        Transaction transaction = null;
+
         try {
             Session session = getSessionFactory().openSession();
-            Transaction tx = session.beginTransaction();
+            transaction = session.beginTransaction();
             session.save(user);
-            tx.commit();
+            transaction.commit();
             session.close();
             return true;
         } catch (HibernateException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
-    /**
-     * @param user wallet user such as balance, address, transaction history and id of the user
-     * @return true if the creation of the user is successful, otherwise, return false.
-     */
-    public boolean createUniqueUser(User user) {
-        try {
-            Session session = getSessionFactory().openSession();
-            Transaction tx = session.beginTransaction();
-            session.saveOrUpdate(user);
-            tx.commit();
-            session.close();
-            return true;
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public void saveOrUpdate(User user) {
-        try {
-            Session session = getSessionFactory().openSession();
-            Transaction tx = session.beginTransaction();
-            session.save(user);
-            tx.commit();
-            session.close();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * @param user
-     * @return
-     */
-    // public int[] create(List<User> user) {
-    public void create(List<User> user) {
-        try {
-            Session session = getSessionFactory().openSession();
-            Transaction tx = session.beginTransaction();
-            for (User user2 : user) {
-                session.save(user2);
+            if (Objects.nonNull(transaction)) {
+                transaction.rollback();
             }
-            tx.commit();
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    /**
+     * @param user takes wallet user as an argument and save it in the users table
+     */
+    public void saveOrUpdate(User user) {
+
+        Transaction transaction = null;
+
+        try {
+            Session session = getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            session.save(user);
+            transaction.commit();
             session.close();
         } catch (HibernateException e) {
+
+            if (Objects.nonNull(transaction)) {
+                transaction.rollback();
+            }
             e.printStackTrace();
         }
     }
 
     /**
-     * @return get the list of all the wallet useres with the corresponding financial informations
+     * @param users takes list of users as arguments
+     * @return return true if the creation of all the users is successful
+     */
+    public boolean create(List<User> users) {
+
+        Transaction transaction = null;
+
+        try {
+
+            Session session = getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+
+            for (User user : users) {
+                session.save(user);
+            }
+
+            transaction.commit();
+            session.close();
+
+            return true;
+        } catch (HibernateException e) {
+            if (Objects.nonNull(transaction)) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    /**
+     * @return get the list of all the wallet users
      */
     @SuppressWarnings("unchecked")
     public List<User> getAllUsers() {
+
         try {
             Session session = getSessionFactory().openSession();
             List<User> userList = session.createQuery("from User").list();
@@ -104,10 +113,10 @@ public class UserDaoHibernate extends HibernateDaoSupport implements UserDao {
 
     /**
      * @param id Id of the bitcoin wallet user
-     * @return the bitcoin wallet user with the corresponding financial information's
+     * @return the bitcoin wallet user
      */
     public User getById(int id) {
-        try (Session session = getSessionFactory().openSession()){
+        try (Session session = getSessionFactory().openSession()) {
             User user = session.get(User.class, id);
             return user;
         } catch (HibernateException e) {

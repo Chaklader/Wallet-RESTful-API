@@ -14,6 +14,11 @@ import java.util.List;
 @Repository
 public class StatusDaoHibernate extends HibernateDaoSupport implements StatusDao {
 
+
+    /**
+     * @param status takes transaction status save it in the status database table
+     * @return return the status object
+     */
     @Override
     public Status saveStatus(final Status status) {
         Transaction transaction = null;
@@ -31,6 +36,11 @@ public class StatusDaoHibernate extends HibernateDaoSupport implements StatusDao
         }
     }
 
+
+    /**
+     * @param walletId takes wallet ID as the input paramenter
+     * @return return the list of the statuses
+     */
     @Override
     public List<Status> getByWalletId(final Long walletId) {
         try (Session session = getSessionFactory().openSession()) {

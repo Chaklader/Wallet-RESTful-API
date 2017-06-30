@@ -15,21 +15,25 @@ import java.util.*;
  */
 public class WalletModel {
 
-    private List<Transaction> transactions = Collections.synchronizedList(new ArrayList<>());
-
-    private ProgressBarUpdater syncProgressUpdater = new ProgressBarUpdater();
-
-    private static double SYNCHRONISATION_FINISHED = 1.0;
-
-    private double syncProgress = -1.0;
-
-    private Coin balance = Coin.ZERO;
+    private int UserId;
 
     private Address address;
 
     private String transaction;
 
-    private int UserId;
+    private Coin balance = Coin.ZERO;
+
+    private double syncProgress = -1.0;
+
+    private static double SYNCHRONISATION_FINISHED = 1.0;
+
+    private ProgressBarUpdater syncProgressUpdater = new ProgressBarUpdater();
+
+    private List<Transaction> transactions = Collections.synchronizedList(new ArrayList<>());
+
+
+    public WalletModel() {
+    }
 
     public int getUserId() {
         return UserId;
@@ -47,21 +51,56 @@ public class WalletModel {
         this.transaction = transaction;
     }
 
-    private List<String> history = new ArrayList<>();
-
-    public List<String> getHistory() {
-        for (Transaction t : transactions) {
-            history.add(addTransactionHistory(t));
-        }
-        return history;
-    }
-
-    public WalletModel() {}
-
     public WalletModel(Wallet wallet) {
         setWallet(wallet);
     }
 
+
+    public boolean isSyncFinished() {
+        return syncProgress == SYNCHRONISATION_FINISHED;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    /**
+     * @param
+     * @return the Satoshi coin based on the wallet balance
+     * 1 BTC =  10^8 Satoshi coin
+     */
+    public Coin getBalance() {
+        return balance;
+    }
+
+    /**
+     * @return get the BTC amount as float from the wallet balance
+     */
+    public float getBalanceFloatFormat() {
+
+        float bal = (float) balance.getValue();
+        float fac = (float) Math.pow(10, 8);
+
+        float result = bal / fac;
+        return result;
+    }
+
+    public double getSyncProgress() {
+        return syncProgress;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public ProgressBarUpdater getSyncProgressUpdater() {
+        return syncProgressUpdater;
+    }
+
+
+    /**
+     * @param wallet takes the wallet as argument and update all the properties
+     */
     private void update(Wallet wallet) {
 
         this.balance = wallet.getBalance();
@@ -70,10 +109,18 @@ public class WalletModel {
 
         transactions.addAll(wallet.getRecentTransactions(100, false));
 
-        this.transaction = "";
+        // find to most recent transaction
+        this.transaction = Objects.isNull(transactions) ||
+                transactions.isEmpty() ? "No transaction" : String.valueOf(transactions.get(0));
     }
 
+
+    /**
+     * @param wallet set up an updated wallet balance, address and transactions
+     * @return return true after successful update of the wallet
+     */
     public boolean setWallet(Wallet wallet) {
+
         try {
             wallet.addChangeEventListener(new WalletChangeEventListener() {
                 @Override
@@ -89,6 +136,9 @@ public class WalletModel {
         return false;
     }
 
+    /**
+     * inner class to tracks download progress of the wallet
+     */
     private class ProgressBarUpdater extends DownloadProgressTracker {
 
         @Override
@@ -104,40 +154,11 @@ public class WalletModel {
         }
     }
 
-    public boolean isSyncFinished() {
-        return syncProgress == SYNCHRONISATION_FINISHED;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    /**
-     * @param
-     * @return the Satoshi coin based on the wallet balance
-     */
-    public Coin getBalance() {
-        return balance;
-    }
-
-
-    /**
-     * @return get the BTC amount as float from the wallet balance
-     */
-    public float getBalanceFloatFormat() {
-
-        float bal = (float) balance.getValue();
-        float fac = (float) Math.pow(10, 8);
-
-        float result = bal / fac;
-        return result;
-    }
-
     /**
      * @param transaction take the wallet transaction as an input
-     * @return the trasaction info of the wallet
+     * @return the human readable transaction info as String
      */
-    private String addTransactionHistory(Transaction transaction) {
+    public String addTransactionHistory(Transaction transaction) {
 
         if (Objects.isNull(transaction)) {
             return "No transaction";
@@ -157,18 +178,6 @@ public class WalletModel {
 
         String message = "Payment with id " + transaction.getHash();
         return message;
-    }
-
-    public double getSyncProgress() {
-        return syncProgress;
-    }
-
-    public ProgressBarUpdater getSyncProgressUpdater() {
-        return syncProgressUpdater;
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
     }
 }
 

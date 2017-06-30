@@ -24,20 +24,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static mobi.puut.controllers.WalletManager.networkParameters;
+
 /**
  * Created by Chaklader on 6/24/17.
  */
 @Service
 public class WalletServiceImpl implements WalletService {
-
-    private static NetworkParameters params = MainNetParams.get();
-
-    private Map<String, WalletManager> genWalletMap = new ConcurrentHashMap<>();
-
-    private Map<Long, WalletManager> walletMangersMap = new ConcurrentHashMap<>();
-
-    @Autowired
-    private WalletInfoDao walletInfoDao;
 
     @Autowired
     private UserDao userDao;
@@ -45,6 +38,26 @@ public class WalletServiceImpl implements WalletService {
     @Autowired
     private StatusDao statusDao;
 
+    @Autowired
+    private WalletInfoDao walletInfoDao;
+
+    private Map<String, WalletManager> genWalletMap = new ConcurrentHashMap<>();
+
+    private Map<Long, WalletManager> walletMangersMap = new ConcurrentHashMap<>();
+
+    @Override
+    public List<Status> getWalletStatuses(final Long id) {
+        return statusDao.getByWalletId(id);
+    }
+
+    @Override
+    public WalletInfo getWalletInfo(Long walletId) {
+        return walletInfoDao.getById(walletId);
+    }
+
+    /**
+     * @return return all the walletInfo as list
+     */
     @Override
     public List<WalletInfo> getAllWallets() {
 
@@ -56,9 +69,18 @@ public class WalletServiceImpl implements WalletService {
         }
     }
 
+    /**
+     * takes walletName as argument and generate a wallet accordance to that
+     *
+     * @param walletName
+     */
     @Override
     public synchronized void generateAddress(final String walletName) {
+
         WalletInfo walletInfo = walletInfoDao.getByName(walletName);
+
+        // generate wallet, if the wallet is not
+        // generated previously
         if (walletInfo == null) {
             if (genWalletMap.get(walletName) == null) {
                 final WalletManager walletManager = WalletManager.setupWallet(walletName);
@@ -74,6 +96,13 @@ public class WalletServiceImpl implements WalletService {
         }
     }
 
+
+    /**
+     * get the wallet model with the provided ID
+     *
+     * @param id
+     * @return
+     */
     @Override
     public WalletModel getWalletModel(final Long id) {
         WalletManager walletManager = getWalletManager(id);
@@ -81,6 +110,14 @@ public class WalletServiceImpl implements WalletService {
         return model;
     }
 
+    /**
+     * Send money from the wallet using the wallet name, address and amount
+     *
+     * @param walletId takes the wallet name
+     * @param amount   takes the sending amount
+     * @param address  takes address to send the money
+     * @return return wallet model with subtracted transaction amount
+     */
     @Override
     public WalletModel sendMoney(final Long walletId, final String amount, final String address) {
 
@@ -95,23 +132,42 @@ public class WalletServiceImpl implements WalletService {
         return model;
     }
 
-    @Override
-    public List<Status> getWalletStatuses(final Long id) {
-        return statusDao.getByWalletId(id);
+    /**
+     * take the amount as Stirng and parse it as Satoshi coin
+     *
+     * @param amountStr wallet money amount as String
+     * @return
+     */
+    protected Coin parseCoin(final String amountStr) {
+
+        try {
+            Coin amount = Coin.parseCoin(amountStr);
+            if (amount.getValue() <= 0) {
+                throw new IllegalArgumentException("Invalid amount: " + amountStr);
+            }
+            return amount;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid amount: " + amountStr);
+        }
     }
 
-    @Override
-    public WalletInfo getWalletInfo(Long walletId) {
-        return walletInfoDao.getById(walletId);
-    }
-
+    /**
+     * Execute the sending from the user to the external wallet
+     *
+     * @param user      wallet user
+     * @param walletId  wallet ID for the user
+     * @param wallet    wallet belongs to the user
+     * @param address   external address to send to BTC
+     * @param amountStr amount to send to the external user
+     */
     protected void send(final User user, final Long walletId, final Wallet wallet,
                         final String address, final String amountStr) {
         // Address exception cannot happen as we validated it beforehand.
         Coin balance = wallet.getBalance();
+
         try {
             Coin amount = parseCoin(amountStr);
-            Address destination = Address.fromBase58(params, address);
+            Address destination = Address.fromBase58(networkParameters, address);
 
             SendRequest req;
             if (amount.equals(balance))
@@ -156,34 +212,12 @@ public class WalletServiceImpl implements WalletService {
         }
     }
 
-    protected Coin parseCoin(final String amountStr) {
-        try {
-            Coin amount = Coin.parseCoin(amountStr);
-            if (amount.getValue() <= 0) {
-                throw new IllegalArgumentException("Invalid amount: " + amountStr);
-            }
-            return amount;
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Invalid amount: " + amountStr);
-        }
-    }
-
-    protected Status saveTransaction(final User user, final Long walletId, final String address,
-                                     final String message, final Coin balance) {
-        Status status = new Status();
-        status.setAddress(address.length() > 90 ? address.substring(0, 89) : address);
-        status.setUser_id(user.getId());
-        status.setWallet_id(walletId);
-        status.setTransaction(message.length() > 90 ? message.substring(0, 89) : message);
-        status.setBalance(balance.getValue());
-        return statusDao.saveStatus(status);
-    }
-
-    protected User getCurrentUser() {
-        User user = userDao.getById(1); //TODO
-        return user;
-    }
-
+    /**
+     * find the wallet manager with provided ID
+     *
+     * @param id
+     * @return
+     */
     protected synchronized WalletManager getWalletManager(final Long id) {
         WalletManager walletManager = walletMangersMap.get(id);
         if (walletManager == null) {
@@ -197,7 +231,43 @@ public class WalletServiceImpl implements WalletService {
         return walletManager;
     }
 
+    /**
+     * @return return the user of concern
+     */
+    protected User getCurrentUser() {
+        User user = userDao.getById(1); //TODO
+        return user;
+    }
+
+    /**
+     * create instances in the wallet_info table with the wallet name and the address
+     *
+     * @param walletName
+     * @param address
+     * @return
+     */
     protected WalletInfo createWalletInfo(final String walletName, final String address) {
         return walletInfoDao.create(walletName, address);
+    }
+
+    /**
+     * save the transaction statuses to the status database table
+     *
+     * @param user
+     * @param walletId
+     * @param address  external address to send the transactions
+     * @param message
+     * @param balance
+     * @return the generated status instance
+     */
+    protected Status saveTransaction(final User user, final Long walletId, final String address,
+                                     final String message, final Coin balance) {
+        Status status = new Status();
+        status.setAddress(address.length() > 90 ? address.substring(0, 89) : address);
+        status.setUser_id(user.getId());
+        status.setWallet_id(walletId);
+        status.setTransaction(message.length() > 90 ? message.substring(0, 89) : message);
+        status.setBalance(balance.getValue());
+        return statusDao.saveStatus(status);
     }
 }

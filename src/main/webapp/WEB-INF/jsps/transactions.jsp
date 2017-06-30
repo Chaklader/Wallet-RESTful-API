@@ -1,9 +1,10 @@
 <%@ page import="mobi.puut.controllers.WalletModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="mobi.puut.controllers.WalletModel" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.bitcoinj.core.Transaction" %>
+
 <html>
 <head>
     <title>Transactions</title>
@@ -15,11 +16,16 @@
             integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
             crossorigin="anonymous"></script>
 </head>
+
+
+
 <%
     WalletModel walletModel = (WalletModel) request.getAttribute("walletModel");
-    List<String> history = walletModel.getHistory();
+    List<Transaction> transactions = walletModel.getTransactions();
     DecimalFormat decimalFormat = new DecimalFormat("#0.0000");
 %>
+
+
 <body class="page_container">
 <div class="wallets_page">
 
@@ -40,14 +46,14 @@
     </div>
 
     <div class="history_section">
-        <% if (!walletModel.isSyncFinished() && !history.isEmpty()) {%>
+        <% if (!walletModel.isSyncFinished() && !transactions.isEmpty()) {%>
         Getting the transaction info ...
-        <% } else if (walletModel.isSyncFinished() && history.isEmpty()) {%>
+        <% } else if (walletModel.isSyncFinished() && transactions.isEmpty()) {%>
         No transaction recorded yet!!
         <% } else {
-            for (String transaction : history) {
+            for (Transaction transaction : transactions) {
         %>
-        <p><%= transaction%>
+        <p><%= walletModel.addTransactionHistory(transaction)%>
         </p>
         <% }
         }%>
@@ -68,7 +74,7 @@
     }, 5000);
     <% } else { %>
     setInterval(function () {
-        getTransactionsNumberAndRefreshPageIfNotEqual('${wallet_id}', '<%= history.size() %>');
+        getTransactionsNumberAndRefreshPageIfNotEqual('${wallet_id}', '<%= transactions.size() %>');
     }, 5000);
     <% }%>
 </script>

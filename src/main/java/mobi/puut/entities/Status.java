@@ -12,20 +12,32 @@ import javax.validation.constraints.Size;
 @Table(name = "status")
 public class Status {
 
+    @Id
+    @Column
     @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @NotNull
+    @Column(name = "user_id")
     private int user_id;
 
+    @NotNull
+    @Column(name = "balance")
     private float balance;
 
+    @NotNull
+    @Column(name = "address")
     @Size(min = 5, max = 90, message = "Address must be between 5 and 90 characters.")
     private String address;
 
+    @NotNull
+    @Column(name = "transaction")
     @Size(min = 5, max = 90, message = "Transaction history must be between 5 and 90 characters.")
     private String transaction;
 
+    @NotNull
+    @Column(name = "wallet_id")
     private long wallet_id;
 
     public Status() {
@@ -48,34 +60,27 @@ public class Status {
         this.transaction = transaction;
     }
 
-    @Id
-    @GeneratedValue
-    @Column
     public int getId() {
         return id;
     }
 
-    @Column(name = "user_id")
+
     public int getUser_id() {
         return user_id;
     }
 
-    @Column
     public float getBalance() {
         return balance;
     }
 
-    @Column
     public String getAddress() {
         return address;
     }
 
-    @Column
     public String getTransaction() {
         return transaction;
     }
 
-    @Column(name = "wallet_id")
     public long getWallet_id() {
         return wallet_id;
     }

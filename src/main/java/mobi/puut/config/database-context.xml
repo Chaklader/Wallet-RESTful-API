@@ -13,13 +13,9 @@
     <context:annotation-config></context:annotation-config>
 
     <context:component-scan base-package="mobi.puut.database">
-
     </context:component-scan>
 
     <beans profile="production">
-
-        <context:property-placeholder
-                location="classpath:mobi/puut/config/jdbc.properties"/>
 
         <jee:jndi-lookup jndi-name="jdbc/spring" id="dataSource"
                          expected-type="javax.sql.DataSource">
@@ -34,7 +30,6 @@
                     <prop key="hibernate.show_sql">false</prop>
                 </props>
             </property>
-
             <property name="packagesToScan" value="mobi.puut.entities"/>
         </bean>
 
@@ -43,7 +38,6 @@
         </bean>
 
         <tx:annotation-driven transaction-manager="transactionManager"/>
-
 
         <bean id="exceptionTranslator"
               class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor">

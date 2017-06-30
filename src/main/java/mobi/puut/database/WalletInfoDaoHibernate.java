@@ -42,6 +42,13 @@ public class WalletInfoDaoHibernate
         }
     }
 
+
+    /**
+     *
+     * @param name name of the wallet
+     * @param address address of the wallet
+     * @return return the created WalletInfo object with provided name and address
+     */
     @Override
     public WalletInfo create(String name, String address) {
         WalletInfo walletInfo = new WalletInfo();
