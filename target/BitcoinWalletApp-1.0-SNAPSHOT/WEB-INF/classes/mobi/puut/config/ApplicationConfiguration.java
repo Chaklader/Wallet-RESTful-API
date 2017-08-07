@@ -57,8 +57,8 @@ import java.util.Properties;
  */
 @Configuration
 @EnableWebMvc
+// @EnableSwagger2
 @EnableTransactionManagement
-@EnableSwagger2
 @ComponentScan(basePackages = {"mobi.puut.controllers"})
 class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
@@ -76,14 +76,14 @@ class ApplicationConfiguration extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
     }
 
     @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 

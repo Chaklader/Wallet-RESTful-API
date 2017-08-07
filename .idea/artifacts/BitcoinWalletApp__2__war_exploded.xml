@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="BitcoinWalletApp:war exploded">
+  <artifact type="exploded-war" name="BitcoinWalletApp (2):war exploded">
     <output-path>$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="BitcoinWalletApp" />
+          <element id="module-output" name="BitcoinWalletApp (2)" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.bitcoinj:bitcoinj-core:0.14.4" />
@@ -31,9 +31,9 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:3.2.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:3.2.3.RELEASE" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:6.0.6" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.0.Final" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.4.1.Final" />
@@ -56,37 +56,19 @@
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
           <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
           <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.2.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:3.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.2.3.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.2.3.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:4.2.3.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:4.2.3.RELEASE" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.0.pr4" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.0.pr4" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0.pr4" />
-          <element id="library" level="project" name="Maven: javax.ws.rs:jsr311-api:1.1.1" />
-          <element id="library" level="project" name="Maven: io.springfox:springfox-swagger2:2.7.0" />
-          <element id="library" level="project" name="Maven: io.swagger:swagger-annotations:1.5.13" />
-          <element id="library" level="project" name="Maven: io.swagger:swagger-models:1.5.13" />
-          <element id="library" level="project" name="Maven: io.springfox:springfox-spi:2.7.0" />
-          <element id="library" level="project" name="Maven: io.springfox:springfox-core:2.7.0" />
-          <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.6.14" />
-          <element id="library" level="project" name="Maven: io.springfox:springfox-schema:2.7.0" />
-          <element id="library" level="project" name="Maven: io.springfox:springfox-swagger-common:2.7.0" />
-          <element id="library" level="project" name="Maven: io.springfox:springfox-spring-web:2.7.0" />
-          <element id="library" level="project" name="Maven: org.reflections:reflections:0.9.11" />
-          <element id="library" level="project" name="Maven: org.springframework.plugin:spring-plugin-core:1.2.0.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.plugin:spring-plugin-metadata:1.2.0.RELEASE" />
-          <element id="library" level="project" name="Maven: org.mapstruct:mapstruct:1.1.0.Final" />
-          <element id="library" level="project" name="Maven: io.springfox:springfox-swagger-ui:2.7.0" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:3.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.20" />
         </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="BitcoinWalletApp/web/Web" />
+      <element id="javaee-facet-resources" facet="BitcoinWalletApp (2)/web/Web" />
     </root>
   </artifact>
 </component>

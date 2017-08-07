@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.ws.rs.Produces;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,9 +23,9 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("/rest")
-@Produces(value = {MediaType.TEXT_PLAIN_VALUE,
-        MediaType.APPLICATION_XML_VALUE,
-        MediaType.APPLICATION_JSON_VALUE})
+//@Produces(value = {MediaType.TEXT_PLAIN_VALUE,
+//        MediaType.APPLICATION_XML_VALUE,
+//        MediaType.APPLICATION_JSON_VALUE})
 public class WalletRestController {
 
     @Autowired
@@ -68,7 +67,7 @@ public class WalletRestController {
      *
      * @return
      */
-    @GetMapping(value = "/users")
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ResponseEntity<List<UserWrapper>> getAllUsers() {
 
         List<User> users = userService.getAllUsers();
@@ -96,7 +95,7 @@ public class WalletRestController {
      * @param id
      * @return
      */
-    @GetMapping(value = "/wallets/{id}")
+    @RequestMapping(value = "/wallets/{id}", method = RequestMethod.GET)
     public ResponseEntity<WalletInfoWrapper> getWalletById(@PathVariable("id") long id) {
 
         System.out.println("Get wallet info with Id = " + id);
@@ -122,7 +121,7 @@ public class WalletRestController {
      * @param name
      * @return
      */
-    @PostMapping("/generateAddress")
+    @RequestMapping(value = "/generateAddress", method = RequestMethod.POST)
     public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody String name) {
 
         if (Objects.isNull(name)) {
@@ -152,7 +151,7 @@ public class WalletRestController {
      * @param address
      * @return
      */
-    @PostMapping(value = "/sendMoney/{walletId}")
+    @RequestMapping(value = "/sendMoney/{walletId}", method = RequestMethod.POST)
     public ResponseEntity<WalletModelWrapper> sendMoneyByWalletId(@PathVariable("walletId") Long walletId,
                                                                   @RequestBody String amount, @RequestBody String address) {
         WalletModel walletModel = getWalletModel(walletId);
@@ -207,7 +206,7 @@ public class WalletRestController {
      * @param id
      * @return
      */
-    @GetMapping(value = "/balanace/{id}")
+    @RequestMapping(value = "/balanace/{id}", method = RequestMethod.GET)
     public ResponseEntity<String> getWalletBalanceById(@PathVariable("id") long id) {
 
         WalletModel walletModel = getWalletModel(id);
@@ -228,7 +227,7 @@ public class WalletRestController {
      * @return
      */
     // curl -G http://localhost:8080/rest/transactions/1 | json
-    @GetMapping(value = "/transactions/{walletId}")
+    @RequestMapping(value = "/transactions/{walletId}", method = RequestMethod.GET)
     public ResponseEntity<List<String>> readAllTransactionsByWalletId(@PathVariable("walletId") Long walletId) {
 
         WalletModel walletModel = getWalletModel(walletId);

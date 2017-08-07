@@ -94,6 +94,7 @@
             <artifactId>spring-test</artifactId>
             <version>4.3.9.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -104,6 +105,7 @@
             <artifactId>validation-api</artifactId>
             <version>RELEASE</version>
         </dependency>
+
         <!--<dependency>-->
         <!--<groupId>org.hibernate</groupId>-->
         <!--<artifactId>hibernate</artifactId>-->
