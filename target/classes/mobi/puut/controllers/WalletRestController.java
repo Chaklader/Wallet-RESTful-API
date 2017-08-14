@@ -23,9 +23,6 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("/rest")
-//@Produces(value = {MediaType.TEXT_PLAIN_VALUE,
-//        MediaType.APPLICATION_XML_VALUE,
-//        MediaType.APPLICATION_JSON_VALUE})
 public class WalletRestController {
 
     @Autowired
@@ -112,23 +109,30 @@ public class WalletRestController {
     }
 
 
-    //  curl -X POST -d "name=uuuw" http://localhost:8080/rest/generateAddress
+
+    // curl -X POST -d "name=uuuw" http://localhost:8080/rest/generateAddress
     // curl -H "Content-Type: application/json" -X POST -d "nonald" http://localhost:8080/rest/generateAddress
 
+    // curl -H "Content-Type: application/json" -X POST -d "walletName=uuuuion&currencyName=bitcoin" http://localhost:8080/rest/generateAddress
+
     /**
-     * generate the address from the provided wallet name
+     * generate the address from the provided wallet walletName
      *
-     * @param name
+     * @param walletName
      * @return
      */
     @RequestMapping(value = "/generateAddress", method = RequestMethod.POST)
-    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody String name) {
+    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestParam("walletName") String walletName,
+                                                             @RequestParam("currencyName") String currencyName) {
 
-        if (Objects.isNull(name)) {
+        // return if the wallet name or the currency is null
+        if (Objects.isNull(walletName) || Objects.isNull(currencyName)) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_ACCEPTABLE);
         }
 
-        WalletInfo walletInfo = walletService.generateAddress(name);
+        String currency = currencyName.toUpperCase();
+
+        WalletInfo walletInfo = walletService.generateAddress(walletName);
 
         if (Objects.isNull(walletInfo)) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_ACCEPTABLE);

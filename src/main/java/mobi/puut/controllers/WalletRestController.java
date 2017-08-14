@@ -122,7 +122,8 @@ public class WalletRestController {
      * @return
      */
     @RequestMapping(value = "/generateAddress", method = RequestMethod.POST)
-    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody String walletName, @RequestBody String currencyName) {
+    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestParam("walletName") String walletName,
+                                                             @RequestParam("currencyName") String currencyName) {
 
         // return if the wallet name or the currency is null
         if (Objects.isNull(walletName) || Objects.isNull(currencyName)) {
@@ -131,33 +132,7 @@ public class WalletRestController {
 
         String currency = currencyName.toUpperCase();
 
-        WalletInfo walletInfo = null;
-
-        switch (currency) {
-
-            case "BITCOIN":
-
-                walletInfo = walletService.generateAddress(walletName);
-                break;
-
-            case "ETHEREUM":
-                break;
-
-            case "LITECOIN":
-                break;
-
-            case "NEM":
-                break;
-
-            case "RIPPLE":
-                break;
-
-            case "DASH":
-                break;
-
-            default:
-                break;
-        }
+        WalletInfo walletInfo = walletService.generateAddress(walletName);
 
         if (Objects.isNull(walletInfo)) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_ACCEPTABLE);
