@@ -23,6 +23,9 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("/rest")
+//@Produces(value = {MediaType.TEXT_PLAIN_VALUE,
+//        MediaType.APPLICATION_XML_VALUE,
+//        MediaType.APPLICATION_JSON_VALUE})
 public class WalletRestController {
 
     @Autowired
@@ -109,55 +112,23 @@ public class WalletRestController {
     }
 
 
-
-    // curl -X POST -d "name=uuuw" http://localhost:8080/rest/generateAddress
+    //  curl -X POST -d "name=uuuw" http://localhost:8080/rest/generateAddress
     // curl -H "Content-Type: application/json" -X POST -d "nonald" http://localhost:8080/rest/generateAddress
 
-    // curl -H "Content-Type: application/json" -X POST -d "walletName=uuuuion&currencyName=bitcoin" http://localhost:8080/rest/generateAddress
-
     /**
-     * generate the address from the provided wallet walletName
+     * generate the address from the provided wallet name
      *
-     * @param walletName
+     * @param name
      * @return
      */
     @RequestMapping(value = "/generateAddress", method = RequestMethod.POST)
-    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody String walletName, @RequestBody String currencyName) {
+    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody String name) {
 
-        // return if the wallet name or the currency is null
-        if (Objects.isNull(walletName) || Objects.isNull(currencyName)) {
+        if (Objects.isNull(name)) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_ACCEPTABLE);
         }
 
-        String currency = currencyName.toUpperCase();
-
-        WalletInfo walletInfo = null;
-
-        switch (currency) {
-
-            case "BITCOIN":
-
-                walletInfo = walletService.generateAddress(walletName);
-                break;
-
-            case "ETHEREUM":
-                break;
-
-            case "LITECOIN":
-                break;
-
-            case "NEM":
-                break;
-
-            case "RIPPLE":
-                break;
-
-            case "DASH":
-                break;
-
-            default:
-                break;
-        }
+        WalletInfo walletInfo = walletService.generateAddress(name);
 
         if (Objects.isNull(walletInfo)) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_ACCEPTABLE);
