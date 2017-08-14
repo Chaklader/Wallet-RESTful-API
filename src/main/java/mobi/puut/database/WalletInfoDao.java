@@ -13,7 +13,7 @@ public interface WalletInfoDao {
 
     WalletInfo getByName(String walletName);
 
-    WalletInfo create(String walletName, String address);
+    WalletInfo create(String walletName, String address, String currencyName);
 
     WalletInfo getById(Long id);
 

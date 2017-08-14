@@ -52,7 +52,7 @@ public class WalletInfoDaoHibernate
      * @return return the created WalletInfo object with provided name and address
      */
     @Override
-    public WalletInfo create(String name, String address) {
+    public WalletInfo create(String name, String address, String currencyName) {
 
         WalletInfo walletInfo = new WalletInfo();
         walletInfo.setAddress(address);

@@ -5,6 +5,8 @@ import mobi.puut.entities.WalletInfo;
 import mobi.puut.services.UserService;
 import mobi.puut.services.WalletService;
 import org.bitcoinj.core.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +27,11 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/rest")
 public class WalletRestController {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
+    //    To revert to a previous commit, ignoring any changes:
+    //    git reset --hard HEAD
 
     @Autowired
     private WalletService walletService;
@@ -95,7 +103,7 @@ public class WalletRestController {
     @RequestMapping(value = "/wallets/{id}", method = RequestMethod.GET)
     public ResponseEntity<WalletInfoWrapper> getWalletById(@PathVariable("id") long id) {
 
-        System.out.println("Get wallet info with Id = " + id);
+        logger.info("Get the wallet with Id =  {}", id);
 
         WalletInfo walletInfo = getWalletInfo(id);
 
@@ -109,11 +117,13 @@ public class WalletRestController {
     }
 
 
-
     // curl -X POST -d "name=uuuw" http://localhost:8080/rest/generateAddress
     // curl -H "Content-Type: application/json" -X POST -d "nonald" http://localhost:8080/rest/generateAddress
 
+    // curl -H "Content-Type: application/json" -X POST -d '{"walletName":"mkyong0","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
+
     // curl -H "Content-Type: application/json" -X POST -d "walletName=uuuuion&currencyName=bitcoin" http://localhost:8080/rest/generateAddress
+
 
     /**
      * generate the address from the provided wallet walletName
@@ -125,14 +135,14 @@ public class WalletRestController {
     public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestParam("walletName") String walletName,
                                                              @RequestParam("currencyName") String currencyName) {
 
+        logger.info("walletName {} and currencyName {}", walletName, currencyName);
+
         // return if the wallet name or the currency is null
         if (Objects.isNull(walletName) || Objects.isNull(currencyName)) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_ACCEPTABLE);
         }
 
-        String currency = currencyName.toUpperCase();
-
-        WalletInfo walletInfo = walletService.generateAddress(walletName);
+        WalletInfo walletInfo = walletService.generateAddress(walletName, currencyName);
 
         if (Objects.isNull(walletInfo)) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_ACCEPTABLE);

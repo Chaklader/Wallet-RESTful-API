@@ -89,6 +89,9 @@ public class WalletServiceImpl implements WalletService {
         if (walletInfo == null) {
 
             if (genWalletMap.get(walletName) == null) {
+
+                System.out.println("wallet name = " + walletName);
+
                 final WalletManager walletManager = WalletManager.setupWallet(walletName);
                 walletManager.addWalletSetupCompletedListener((wallet) -> {
                     Address address = wallet.currentReceiveAddress();
