@@ -39,6 +39,7 @@ public class WalletManager {
     public static WalletManager setupWallet(final String walletName) {
 
         logger.info("Setup Wallet");
+
         WalletManager walletManager = new WalletManager();
         walletManager.setupWalletKit(walletName);
 

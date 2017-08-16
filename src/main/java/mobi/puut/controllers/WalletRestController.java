@@ -8,15 +8,11 @@ import org.bitcoinj.core.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,9 +26,6 @@ public class WalletRestController {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    //    To revert to a previous commit, ignoring any changes:
-    //    git reset --hard HEAD
-
     @Autowired
     private WalletService walletService;
 
@@ -40,10 +33,9 @@ public class WalletRestController {
     private UserService userService;
 
 
-    // curl -G http://localhost:8080/rest/wallets | json
-
     /**
      * get all the WalletInfo entities
+     * curl -G http://localhost:8080/rest/wallets | json
      *
      * @return
      */
@@ -65,10 +57,9 @@ public class WalletRestController {
     }
 
 
-    // curl -G http://localhost:8080/rest/users | json
-
     /**
      * get all the users
+     * curl -G http://localhost:8080/rest/users | json
      *
      * @return
      */
@@ -90,12 +81,11 @@ public class WalletRestController {
     }
 
 
-    // curl -i -H "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
-    // curl -G "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
-    // // curl -X GET "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
-
     /**
      * get the info of the specific wallet
+     * curl -i -H "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
+     * curl -G "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
+     * curl -X GET "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
      *
      * @param id
      * @return
@@ -117,13 +107,54 @@ public class WalletRestController {
     }
 
 
+    /**
+     * get the wallet address with the currency name and the wallet name
+     *
+     * returns the Long value for the walletInfo
+     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut | json
+     *
+     *
+     * returns the String value for the walletInfo address
+     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut/true | json
+     *
+     * @param currencyName
+     * @param walletName
+     * @return
+     */
+    @RequestMapping(value = "wallets/{currencyName}/{walletName}", method = RequestMethod.GET
+            , produces = "text/html")
+    public ResponseEntity<?> getAddressWithCurrencyAndWalletName(@PathVariable("currencyName") String currencyName,
+                                                                 @PathVariable("walletName") String walletName
+            , @RequestParam(value = "address", required = false) boolean address) {
+
+        logger.info("The currency name is {} and wallet name is {}", currencyName, walletName);
+        WalletInfo walletInfo = walletService.getWalletInfoWithCurrencyAndWalletName(currencyName, walletName);
+
+        if (Objects.isNull(walletInfo)) {
+            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+        }
+
+        // The GET request contains a boolean true for the address
+        // address values is expected and will be returned
+        if(address){
+
+            String addressValue = walletInfo.getAddress();
+            return new ResponseEntity<String>(addressValue, HttpStatus.OK);
+        }
+
+        else {
+            Long walletId = walletInfo.getId();
+            return new ResponseEntity<Long>(walletId, HttpStatus.OK);
+        }
+    }
+
+
     // curl -X POST -d "name=uuuw" http://localhost:8080/rest/generateAddress
     // curl -H "Content-Type: application/json" -X POST -d "nonald" http://localhost:8080/rest/generateAddress
 
     // curl -H "Content-Type: application/json" -X POST -d '{"walletName":"mkyong0","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
 
     // curl -H "Content-Type: application/json" -X POST -d "walletName=uuuuion&currencyName=bitcoin" http://localhost:8080/rest/generateAddress
-
 
     /**
      * generate the address from the provided wallet walletName
@@ -132,9 +163,8 @@ public class WalletRestController {
      * @return
      */
     @RequestMapping(value = "/generateAddress", method = RequestMethod.POST)
-    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestParam("walletName") String walletName,
-                                                             @RequestParam("currencyName") String currencyName) {
-
+    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestParam("currencyName") String currencyName,
+                                                             @RequestParam("walletName") String walletName) {
         logger.info("walletName {} and currencyName {}", walletName, currencyName);
 
         // return if the wallet name or the currency is null
@@ -154,6 +184,8 @@ public class WalletRestController {
         return new ResponseEntity<WalletInfoWrapper>(walletInfoWrapper, HttpStatus.CREATED);
     }
 
+    // NOTE
+    // make sure the send and the receive operation populates the status table properly
 
     // curl -X POST -d "amount=0.56&address=myuoXZrmSKtybRzkR5GfJm4LNtUoUorqsn" http://localhost:8080/rest/sendMoney/3
 
@@ -184,25 +216,28 @@ public class WalletRestController {
     }
 
 
+    // write another RESTful method for the receiving operations
+
+
     // curl -i -X DELETE http://localhost:8080/rest/delete/9
 
     /**
      * delete a wallet with the Id
      *
-     * @param id
+     * @param walletInfoId
      * @return
      */
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<WalletInfoWrapper> deleteWalletInfoById(@PathVariable("id") long id) {
+    @RequestMapping(value = "/delete/{walletInfoId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<WalletInfoWrapper> deleteWalletInfoById(@PathVariable("walletInfoId") long walletInfoId) {
 
-        WalletInfo walletInfo = getWalletInfo(id);
+        WalletInfo walletInfo = getWalletInfo(walletInfoId);
 
         if (walletInfo == null) {
-            System.out.println("The WalletInfo obj with id = " + id + " is not found");
+            System.out.println("The WalletInfo obj with id = " + walletInfoId + " is not found");
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_FOUND);
         }
 
-        walletService.deleteWalletInfoById(id);
+        walletService.deleteWalletInfoById(walletInfoId);
 
         WalletInfoWrapper walletInfoWrapper = new WalletInfoWrapper();
         walletInfoWrapper.setName(walletInfo.getName());
@@ -270,7 +305,6 @@ public class WalletRestController {
     @ResponseBody
     @RequestMapping("/walletsNumber")
     public String getWalletsCount() {
-
         List<WalletInfo> wallets = walletService.getAllWallets();
         return String.valueOf(wallets.size());
     }
@@ -318,12 +352,29 @@ public class WalletRestController {
 
         String address;
 
+        // currency such as bitcoin, ethereum, litecoin, nem, ripple, dash etc
+        String currencyName;
+
+        public String getCurrencyName() {
+            return currencyName;
+        }
+
+        public void setCurrencyName(String currencyName) {
+            this.currencyName = currencyName;
+        }
+
         public WalletInfoWrapper() {
         }
 
         public WalletInfoWrapper(String name, String address) {
             this.name = name;
             this.address = address;
+        }
+
+        public WalletInfoWrapper(String name, String address, String currencyName) {
+            this.name = name;
+            this.address = address;
+            this.currencyName = currencyName;
         }
 
         public String getAddress() {

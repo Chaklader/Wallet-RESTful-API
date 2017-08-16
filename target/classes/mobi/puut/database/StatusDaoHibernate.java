@@ -21,7 +21,9 @@ public class StatusDaoHibernate extends HibernateDaoSupport implements StatusDao
      */
     @Override
     public Status saveStatus(final Status status) {
+
         Transaction transaction = null;
+
         try (Session session = getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             session.persist(status);

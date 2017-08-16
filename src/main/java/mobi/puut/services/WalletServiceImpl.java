@@ -63,6 +63,12 @@ public class WalletServiceImpl implements WalletService {
         return walletInfoDao.getById(walletId);
     }
 
+
+    @Override
+    public WalletInfo getWalletInfoWithCurrencyAndWalletName(String currencyName, String walletName) {
+        return walletInfoDao.getWalletInfoWithCurrencyAndWalletName(currencyName, walletName);
+    }
+
     /**
      * @return return all the walletInfo as list
      */
@@ -98,6 +104,7 @@ public class WalletServiceImpl implements WalletService {
 
                 switch (currency) {
 
+                    // generate the WalletInfo entity for the Bitcoin
                     case "BITCOIN": {
 
                         logger.info("Currency that we are workign on {}", currency);
@@ -116,9 +123,7 @@ public class WalletServiceImpl implements WalletService {
                         genWalletMap.put(walletName, walletManager);
                         break;
                     }
-
                     case "ETHEREUM":
-
                         logger.info("Currency that we are workign on {}", currency);
                         break;
 
@@ -126,14 +131,14 @@ public class WalletServiceImpl implements WalletService {
                         logger.info("Currency that we are workign on {}", currency);
                         break;
 
-                    case "NEM":
+                    case "NEM": {
                         logger.info("Currency that we are workign on {}", currency);
                         break;
+                    }
 
                     case "RIPPLE":
                         logger.info("Currency that we are workign on {}", currency);
                         break;
-
                     case "DASH":
                         logger.info("Currency that we are workign on {}", currency);
                         break;
@@ -142,10 +147,8 @@ public class WalletServiceImpl implements WalletService {
                         break;
                 }
             }
-
             return walletInfo;
         }
-
         return null;
     }
 
@@ -186,6 +189,7 @@ public class WalletServiceImpl implements WalletService {
                 return model;
             }
 
+            // send the money with the user, wallet Id, wallet, address and the amount
             send(user, walletId, wallet, address, amount);
             model = walletManager.getModel();
         }
@@ -222,22 +226,30 @@ public class WalletServiceImpl implements WalletService {
      */
     protected void send(final User user, final Long walletId, final Wallet wallet,
                         final String address, final String amountStr) {
+
         // Address exception cannot happen as we validated it beforehand.
         Coin balance = wallet.getBalance();
 
         try {
+
             Coin amount = parseCoin(amountStr);
             Address destination = Address.fromBase58(networkParameters, address);
 
             SendRequest req;
-            if (amount.equals(balance))
+
+            // empty the wallet if the sending amount is the same as the wallet balance
+            if (amount.equals(balance)) {
                 req = SendRequest.emptyWallet(destination);
-            else
+            } else {
                 req = SendRequest.to(destination, amount);
+            }
 
             Wallet.SendResult sendResult = wallet.sendCoins(req);
 
             Futures.addCallback(sendResult.broadcastComplete, new FutureCallback<Transaction>() {
+
+                // sending the transaction is successful and hence, save
+                // the transaction in the status database table
                 @Override
                 public void onSuccess(@Nullable Transaction result) {
                     String message = result.toString();
@@ -297,6 +309,8 @@ public class WalletServiceImpl implements WalletService {
      * @return return the user of concern
      */
     protected User getCurrentUser() {
+
+        // for now we have only one user with Id 1
         User user = userDao.getById(1); //TODO
         return user;
     }
@@ -312,6 +326,7 @@ public class WalletServiceImpl implements WalletService {
         return walletInfoDao.create(walletName, address, currencyName);
     }
 
+
     /**
      * save the transaction statuses to the status database table
      *
@@ -326,10 +341,13 @@ public class WalletServiceImpl implements WalletService {
                                      final String message, final Coin balance) {
         Status status = new Status();
         status.setAddress(address.length() > 90 ? address.substring(0, 89) : address);
+
         status.setUser_id(user.getId());
+
         status.setWallet_id(walletId);
         status.setTransaction(message.length() > 90 ? message.substring(0, 89) : message);
         status.setBalance(balance.getValue());
+
         return statusDao.saveStatus(status);
     }
 

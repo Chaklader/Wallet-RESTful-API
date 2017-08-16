@@ -47,12 +47,34 @@ public class WalletInfoDaoHibernate
     }
 
     /**
+     * get the WalletInfo entity with the currency name and the wallet name
+     *
+     * @param currencyName name of the currency e.g; bitcoin,  ethereum, litecoin, nem, ripple and dash
+     * @param walletName   name of the wallet provided by the user
+     * @return WalletInfo entity
+     */
+    @Override
+    public WalletInfo getWalletInfoWithCurrencyAndWalletName(String currencyName, String walletName) {
+
+        try (Session session = getSessionFactory().openSession()) {
+
+            Query query = session.createQuery("FROM WalletInfo WHERE currency = :currency AND name = :name");
+            query.setParameter("currency", currencyName);
+            query.setParameter("name", walletName);
+
+            List<WalletInfo> walletInfos = query.getResultList();
+            return walletInfos.isEmpty() ? null : walletInfos.get(0);
+        }
+    }
+
+
+    /**
      * @param name    name of the wallet
      * @param address address of the wallet
      * @return return the created WalletInfo object with provided name and address
      */
     @Override
-    public WalletInfo create(String name, String address) {
+    public WalletInfo create(String name, String address, String currencyName) {
 
         WalletInfo walletInfo = new WalletInfo();
         walletInfo.setAddress(address);

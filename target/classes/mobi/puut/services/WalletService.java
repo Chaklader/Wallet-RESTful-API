@@ -13,7 +13,7 @@ public interface WalletService {
 
     List<WalletInfo> getAllWallets();
 
-    WalletInfo generateAddress(String walletName);
+    WalletInfo generateAddress(String walletName, String currencyName);
 
     WalletModel getWalletModel(Long id);
 
@@ -22,6 +22,8 @@ public interface WalletService {
     List<Status> getWalletStatuses(Long id);
 
     WalletInfo getWalletInfo(Long id);
+
+    WalletInfo getWalletInfoWithCurrencyAndWalletName(String currencyName, String walletName);
 
     void deleteWalletInfoById(Long id);
 }

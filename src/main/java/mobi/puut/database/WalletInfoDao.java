@@ -18,4 +18,6 @@ public interface WalletInfoDao {
     WalletInfo getById(Long id);
 
     void deleteWalletInfoById(Long id);
+
+    WalletInfo getWalletInfoWithCurrencyAndWalletName(String currencyName, String walletName);
 }

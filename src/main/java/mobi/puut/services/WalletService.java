@@ -23,5 +23,7 @@ public interface WalletService {
 
     WalletInfo getWalletInfo(Long id);
 
+    WalletInfo getWalletInfoWithCurrencyAndWalletName(String currencyName, String walletName);
+
     void deleteWalletInfoById(Long id);
 }
