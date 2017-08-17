@@ -101,25 +101,36 @@ public class WalletRestController {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_FOUND);
         }
 
-        WalletInfoWrapper walletInfoWrapper = new WalletInfoWrapper(walletInfo.getName(), walletInfo.getAddress());
+        // set the wallet name, address and the currency in the walletInfo wrapper
+        WalletInfoWrapper walletInfoWrapper = new WalletInfoWrapper(walletInfo.getName(),
+                walletInfo.getAddress(), walletInfo.getCurrency());
 
         return new ResponseEntity<WalletInfoWrapper>(walletInfoWrapper, HttpStatus.OK);
     }
 
 
+    // use the wallet id to get info from the status table
+
+
     /**
      * get the wallet address with the currency name and the wallet name
-     * curl -i -H "Accept: application/json" http://localhost:8080/rest/wallets/bitcoin/puut | json
-     * curl -G "Accept: application/json" http://localhost:8080/rest/wallets/bitcoin/puut | json
-     * curl -X GET "Accept: application/json" http://localhost:8080/rest/wallets/bitcoin/puut | json
+     * <p>
+     * returns the Long value for the walletInfo
+     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut | json
+     * <p>
+     * <p>
+     * returns the String value for the walletInfo address
+     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut/true | json
      *
      * @param currencyName
      * @param walletName
      * @return
      */
-    @RequestMapping(value = "wallets/{currencyName}/{walletName}", method = RequestMethod.GET)
-    public ResponseEntity<String> getAddressWithCurrencyAndWalletName(@PathVariable("currencyName") String currencyName,
-                                                                      @PathVariable("walletName") String walletName) {
+    @RequestMapping(value = "wallets/{currencyName}/{walletName}", method = RequestMethod.GET
+            , produces = "text/html")
+    public ResponseEntity<?> getAddressWithCurrencyAndWalletName(@PathVariable("currencyName") String currencyName,
+                                                                 @PathVariable("walletName") String walletName
+            , @RequestParam(value = "address", required = false) boolean address) {
 
         logger.info("The currency name is {} and wallet name is {}", currencyName, walletName);
         WalletInfo walletInfo = walletService.getWalletInfoWithCurrencyAndWalletName(currencyName, walletName);
@@ -128,8 +139,15 @@ public class WalletRestController {
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
         }
 
-        String address = walletInfo.getAddress();
-        return new ResponseEntity<String>(address, HttpStatus.OK);
+        // The GET request contains a boolean true for the address
+        // address values is expected and will be returned
+        if (address) {
+            String addressValue = walletInfo.getAddress();
+            return new ResponseEntity<String>(addressValue, HttpStatus.OK);
+        } else {
+            Long walletId = walletInfo.getId();
+            return new ResponseEntity<Long>(walletId, HttpStatus.OK);
+        }
     }
 
 
@@ -231,10 +249,9 @@ public class WalletRestController {
     }
 
 
-    // curl -G http://localhost:8080/rest/balanace/1 | json
-
     /**
      * get the wallet balance with the Id
+     * curl -G http://localhost:8080/rest/balanace/1 | json
      *
      * @param id
      * @return
@@ -255,29 +272,45 @@ public class WalletRestController {
 
     /**
      * get the list of the transactions with the wallet Id
+     * curl -G http://localhost:8080/rest/transactions/1 | json
      *
      * @param walletId
      * @return
      */
-    // curl -G http://localhost:8080/rest/transactions/1 | json
     @RequestMapping(value = "/transactions/{walletId}", method = RequestMethod.GET)
     public ResponseEntity<List<String>> readAllTransactionsByWalletId(@PathVariable("walletId") Long walletId) {
 
-        WalletModel walletModel = getWalletModel(walletId);
 
-        if (Objects.isNull(walletModel)) {
-            return new ResponseEntity<List<String>>(HttpStatus.NOT_FOUND);
-        }
+        // un-comment the code block
 
-        List<Transaction> transactions = walletModel.getTransactions();
+//        WalletModel walletModel = getWalletModel(walletId);
+//
+//        if (Objects.isNull(walletModel)) {
+//            return new ResponseEntity<List<String>>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        List<Transaction> transactions = walletModel.getTransactions();
+//
+//        List<String> list = new ArrayList<>();
+//
+//        for (Transaction transaction : transactions) {
+//            list.add(walletModel.addTransactionHistory(transaction));
+//        }
 
-        List<String> list = new ArrayList<>();
 
-        for (Transaction transaction : transactions) {
-            list.add(walletModel.addTransactionHistory(transaction));
-        }
+        // the block is for testing, needs to be deleted after the mock testing
+        List<String> test = new ArrayList<>();
 
-        return new ResponseEntity<List<String>>(list, HttpStatus.OK);
+        test.add("Berlin");
+        test.add("Miami");
+        test.add("Seattle");
+        test.add("Copenhagen");
+        return new ResponseEntity<List<String>>(test, HttpStatus.OK);
+        // the block is for testing, needs to be deleted after the mock testing
+
+
+        // un-comment after the testing is fnished and above code block is deleted
+//        return new ResponseEntity<List<String>>(list, HttpStatus.OK);
     }
 
 
@@ -433,6 +466,57 @@ public class WalletRestController {
             this.balance = balance;
         }
     }
+
+
+    // Wrapper class for the status table
+    private class StatusWrapper {
+
+        String address;
+
+        String balance;
+
+        String transactions;
+
+        public StatusWrapper(String address, String balance, String transactions) {
+            this.address = address;
+            this.balance = balance;
+            this.transactions = transactions;
+        }
+
+        public StatusWrapper() {
+        }
+
+
+        public StatusWrapper(String address, String balance) {
+            this.address = address;
+            this.balance = balance;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getBalance() {
+            return balance;
+        }
+
+        public void setBalance(String balance) {
+            this.balance = balance;
+        }
+
+        public String getTransactions() {
+            return transactions;
+        }
+
+        public void setTransactions(String transactions) {
+            this.transactions = transactions;
+        }
+    }
+
 
     /**
      * get the WalletModel bt the Id

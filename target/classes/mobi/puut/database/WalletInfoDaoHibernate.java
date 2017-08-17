@@ -79,6 +79,7 @@ public class WalletInfoDaoHibernate
         WalletInfo walletInfo = new WalletInfo();
         walletInfo.setAddress(address);
         walletInfo.setName(name);
+        walletInfo.setCurrency(currencyName);
 
         Transaction transaction = null;
 

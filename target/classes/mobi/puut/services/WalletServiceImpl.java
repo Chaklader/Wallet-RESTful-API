@@ -104,7 +104,6 @@ public class WalletServiceImpl implements WalletService {
 
                 switch (currency) {
 
-
                     // generate the WalletInfo entity for the Bitcoin
                     case "BITCOIN": {
 
@@ -115,7 +114,9 @@ public class WalletServiceImpl implements WalletService {
                         walletManager.addWalletSetupCompletedListener((wallet) -> {
 
                             Address address = wallet.currentReceiveAddress();
-                            WalletInfo newWallet = createWalletInfo(walletName, address.toString(), currency);
+
+                            // we will insret the currency in database in the lowercase
+                            WalletInfo newWallet = createWalletInfo(walletName, address.toString(), currency.toLowerCase());
 
                             walletMangersMap.put(newWallet.getId(), walletManager);
                             genWalletMap.remove(walletName);
@@ -124,7 +125,6 @@ public class WalletServiceImpl implements WalletService {
                         genWalletMap.put(walletName, walletManager);
                         break;
                     }
-
                     case "ETHEREUM":
                         logger.info("Currency that we are workign on {}", currency);
                         break;
@@ -133,14 +133,14 @@ public class WalletServiceImpl implements WalletService {
                         logger.info("Currency that we are workign on {}", currency);
                         break;
 
-                    case "NEM":
+                    case "NEM": {
                         logger.info("Currency that we are workign on {}", currency);
                         break;
+                    }
 
                     case "RIPPLE":
                         logger.info("Currency that we are workign on {}", currency);
                         break;
-
                     case "DASH":
                         logger.info("Currency that we are workign on {}", currency);
                         break;
@@ -163,6 +163,7 @@ public class WalletServiceImpl implements WalletService {
      */
     @Override
     public WalletModel getWalletModel(final Long id) {
+
         WalletManager walletManager = getWalletManager(id);
         WalletModel model = walletManager == null ? null : walletManager.getModel();
         return model;
@@ -297,6 +298,7 @@ public class WalletServiceImpl implements WalletService {
         WalletManager walletManager = walletMangersMap.get(id);
 
         if (walletManager == null) {
+
             WalletInfo walletInfo = walletInfoDao.getById(id);
             if (walletInfo != null) {
                 String name = walletInfo.getName();
