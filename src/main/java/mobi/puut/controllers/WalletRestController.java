@@ -109,7 +109,12 @@ public class WalletRestController {
     }
 
 
-    // use the wallet id to get info from the status table
+    // TODO
+    // A. write a RESTful method using the wallet id to get info from the status table
+
+    // TODO
+    // B. write a RESTful method for the receiving operations
+
 
 
     /**
@@ -186,12 +191,9 @@ public class WalletRestController {
         return new ResponseEntity<WalletInfoWrapper>(walletInfoWrapper, HttpStatus.CREATED);
     }
 
-    // NOTE
-    // make sure the send and the receive operation populates the status table properly
-
-    // curl -X POST -d "amount=0.56&address=myuoXZrmSKtybRzkR5GfJm4LNtUoUorqsn" http://localhost:8080/rest/sendMoney/3
 
     /**
+     * curl -X POST -d "amount=0.56&address=myuoXZrmSKtybRzkR5GfJm4LNtUoUorqsn" http://localhost:8080/rest/sendMoney/3
      * send money to the external users
      *
      * @param walletId
@@ -217,9 +219,6 @@ public class WalletRestController {
 
         return new ResponseEntity<WalletModelWrapper>(walletModelWrapper, HttpStatus.OK);
     }
-
-
-    // write another RESTful method for the receiving operations
 
 
     // curl -i -X DELETE http://localhost:8080/rest/delete/9
@@ -281,44 +280,27 @@ public class WalletRestController {
     @RequestMapping(value = "/transactions/{walletId}", method = RequestMethod.GET)
     public ResponseEntity<List<String>> readAllTransactionsByWalletId(@PathVariable("walletId") Long walletId) {
 
+        WalletModel walletModel = getWalletModel(walletId);
 
-        // un-comment the code block
+        if (Objects.isNull(walletModel)) {
+            return new ResponseEntity<List<String>>(HttpStatus.NOT_FOUND);
+        }
 
-//        WalletModel walletModel = getWalletModel(walletId);
-//
-//        if (Objects.isNull(walletModel)) {
-//            return new ResponseEntity<List<String>>(HttpStatus.NOT_FOUND);
-//        }
-//
-//        List<Transaction> transactions = walletModel.getTransactions();
-//
-//        List<String> list = new ArrayList<>();
-//
-//        for (Transaction transaction : transactions) {
-//            list.add(walletModel.addTransactionHistory(transaction));
-//        }
+        List<Transaction> transactions = walletModel.getTransactions();
 
+        List<String> list = new ArrayList<>();
 
-        // the block is for testing, needs to be deleted after the mock testing
-        List<String> test = new ArrayList<>();
+        for (Transaction transaction : transactions) {
+            list.add(walletModel.addTransactionHistory(transaction));
+        }
 
-        test.add("Berlin");
-        test.add("Miami");
-        test.add("Seattle");
-        test.add("Copenhagen");
-
-        return new ResponseEntity<List<String>>(test, HttpStatus.OK);
-        // the block is for testing, needs to be deleted after the mock testing
-
-
-        // un-comment after the testing is fnished and above code block is deleted
-//        return new ResponseEntity<List<String>>(list, HttpStatus.OK);
+        return new ResponseEntity<List<String>>(list, HttpStatus.OK);
     }
 
 
-    // http://localhost:8080/rest/walletsNumber
-
     /**
+     * http://localhost:8080/rest/walletsNumber
+     *
      * @return return the number of wallet created as String
      */
     @ResponseBody
@@ -329,9 +311,9 @@ public class WalletRestController {
     }
 
 
-    // http://localhost:8080/rest/walletBalance
-
     /**
+     * http://localhost:8080/rest/walletBalance
+     *
      * @param id takes wallet index as the Long ID argument
      * @return return the balance of the request wallet
      */
@@ -343,9 +325,10 @@ public class WalletRestController {
         return String.valueOf(walletModel.getBalanceFloatFormat());
     }
 
-    // http://localhost:8080/rest/walletTransactionsNumber
 
     /**
+     * http://localhost:8080/rest/walletTransactionsNumber
+     *
      * @param id takes wallet index as the Long ID argument
      * @return return the number of transaction executed on
      * the requested wallet
@@ -360,7 +343,26 @@ public class WalletRestController {
     }
 
 
-    // Utility methods for the class
+    /**
+     * get the WalletModel bt the Id
+     *
+     * @param id
+     * @return
+     */
+    private WalletModel getWalletModel(Long id) {
+        return walletService.getWalletModel(id);
+    }
+
+    /**
+     * get the WalletInfo entity by id
+     *
+     * @param id
+     * @return
+     */
+    private WalletInfo getWalletInfo(Long id) {
+        return walletService.getWalletInfo(id);
+    }
+
 
     /**
      * a wrapper class of the WalletInfo class
@@ -517,26 +519,5 @@ public class WalletRestController {
         public void setTransactions(String transactions) {
             this.transactions = transactions;
         }
-    }
-
-
-    /**
-     * get the WalletModel bt the Id
-     *
-     * @param id
-     * @return
-     */
-    private WalletModel getWalletModel(Long id) {
-        return walletService.getWalletModel(id);
-    }
-
-    /**
-     * get the WalletInfo entity by id
-     *
-     * @param id
-     * @return
-     */
-    private WalletInfo getWalletInfo(Long id) {
-        return walletService.getWalletInfo(id);
     }
 }
