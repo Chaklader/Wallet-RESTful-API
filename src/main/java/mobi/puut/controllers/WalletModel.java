@@ -2,13 +2,15 @@ package mobi.puut.controllers;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.Transaction;
-import org.bitcoinj.core.listeners.DownloadProgressTracker;
-import org.bitcoinj.utils.MonetaryFormat;
-import org.bitcoinj.wallet.Wallet;
-import org.bitcoinj.wallet.listeners.WalletChangeEventListener;
 
 import java.util.*;
+
+import org.bitcoinj.core.Transaction;
+import org.bitcoinj.wallet.Wallet;
+import org.bitcoinj.utils.MonetaryFormat;
+import org.bitcoinj.core.listeners.DownloadProgressTracker;
+import org.bitcoinj.wallet.listeners.WalletChangeEventListener;
+
 
 /**
  * Created by Chaklader on 6/12/17.
@@ -31,7 +33,8 @@ public class WalletModel {
 
     private List<Transaction> transactions = Collections.synchronizedList(new ArrayList<>());
 
-    public WalletModel() {}
+    public WalletModel() {
+    }
 
     public int getUserId() {
         return UserId;
@@ -52,7 +55,6 @@ public class WalletModel {
     public WalletModel(Wallet wallet) {
         setWallet(wallet);
     }
-
 
     public boolean isSyncFinished() {
         return syncProgress == SYNCHRONISATION_FINISHED;
@@ -95,7 +97,6 @@ public class WalletModel {
         return syncProgressUpdater;
     }
 
-
     /**
      * @param wallet takes the wallet as argument and update all the properties
      */
@@ -120,6 +121,7 @@ public class WalletModel {
     public boolean setWallet(Wallet wallet) {
 
         try {
+
             wallet.addChangeEventListener(new WalletChangeEventListener() {
                 @Override
                 public void onWalletChanged(Wallet wallet) {

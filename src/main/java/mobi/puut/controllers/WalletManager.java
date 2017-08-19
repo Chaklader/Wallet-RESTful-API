@@ -20,6 +20,9 @@ import java.util.List;
  */
 public class WalletManager {
 
+    // custom logger for the class
+    private static final Logger logger = LoggerFactory.getLogger(WalletManager.class);
+
     public static WalletAppKit bitcoin;
 
     private WalletModel model = new WalletModel();
@@ -31,8 +34,6 @@ public class WalletManager {
 
     public static final String WALLET_FILE_NAME = APP_NAME.replaceAll("[^a-zA-Z0-9.-]", "_")
             + networkParameters.getPaymentProtocolId();
-
-    private static final Logger logger = LoggerFactory.getLogger(WalletManager.class);
 
     private List<WalletSetupCompletedListener> setupCompletedListeners = Collections.synchronizedList(new LinkedList<>());
 
@@ -57,6 +58,7 @@ public class WalletManager {
     }
 
     private WalletManager() {
+
     }
 
     /**
@@ -102,6 +104,7 @@ public class WalletManager {
                 // they're sending their own money anyway!!
                 bitcoin.wallet().allowSpendingUnconfirmedTransactions();
                 Wallet wallet = bitcoin.wallet();
+
                 model.setWallet(wallet);
                 setupCompletedListeners.forEach(listener -> listener.onSetupCompleted(wallet));
             }

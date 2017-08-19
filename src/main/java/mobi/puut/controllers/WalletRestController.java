@@ -115,8 +115,6 @@ public class WalletRestController {
     // TODO
     // B. write a RESTful method for the receiving operations
 
-
-
     /**
      * get the wallet address with the currency name and the wallet name
      * <p>

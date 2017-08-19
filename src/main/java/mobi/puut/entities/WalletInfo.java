@@ -13,7 +13,7 @@ public class WalletInfo {
     @Id
     @Column(name = "id")
     @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
