@@ -2,6 +2,7 @@ package mobi.puut.database;
 
 import mobi.puut.entities.WalletInfo;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -61,5 +62,17 @@ public class WalletInfoDao {
     public void deleteWalletInfoById(Long theId) {
         sessionFactory.getCurrentSession().createQuery("delete WalletInfo where id = :id")
                 .setParameter("id", theId).executeUpdate();
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public WalletInfo getWalletInfoWithWalletNameAndCurrency(String walletName, String currencyName) {
+
+        List<WalletInfo> walletInfos = sessionFactory.getCurrentSession()
+                .createQuery("from WalletInfo where name = :name and currency =: currency")
+                .setParameter("name", walletName)
+                .setParameter("currency", currencyName).getResultList();
+
+        return Objects.isNull(walletInfos) || walletInfos.isEmpty() ?
+                null : walletInfos.get(0);
     }
 }
