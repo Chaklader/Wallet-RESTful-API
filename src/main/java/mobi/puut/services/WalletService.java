@@ -72,9 +72,12 @@ public class WalletService {
 
 
     /**
-     * takes walletName as argument and generate a wallet accordance to that
+     * take wallet name and the ccurrency as input parameter and
+     * generate WalletInfo entity for the respective parameters
      *
      * @param walletName
+     * @param currencyName
+     * @return
      */
     public synchronized WalletInfo generateAddress(final String walletName, String currencyName) {
 
@@ -89,18 +92,46 @@ public class WalletService {
 
                 logger.info("Wallet name that we are workign on {}", walletName);
 
-                final WalletManager walletManager = WalletManager.setupWallet(walletName);
+                String curr = currencyName.toUpperCase();
 
-                walletManager.addWalletSetupCompletedListener((wallet) -> {
+                switch (curr) {
 
-                    Address address = wallet.currentReceiveAddress();
-                    WalletInfo newWallet = createWalletInfo(walletName, currencyName, address.toString());
+                    case "BITCOIN": {
 
-                    walletMangersMap.put(newWallet.getId(), walletManager);
-                    genWalletMap.remove(walletName);
-                });
+                        final WalletManager walletManager = WalletManager.setupWallet(walletName);
 
-                genWalletMap.put(walletName, walletManager);
+                        walletManager.addWalletSetupCompletedListener((wallet) -> {
+
+                            Address address = wallet.currentReceiveAddress();
+                            WalletInfo newWallet = createWalletInfo(walletName, currencyName.toLowerCase(), address.toString());
+
+                            walletMangersMap.put(newWallet.getId(), walletManager);
+                            genWalletMap.remove(walletName);
+                        });
+
+                        genWalletMap.put(walletName, walletManager);
+                        break;
+                    }
+
+                    case "ETHEREUM":
+                        break;
+
+                    case "LITECOIN":
+                        break;
+
+                    case "NEM":
+                        break;
+
+                    case "RIPPLE":
+                        break;
+
+                    case "DASH":
+                        break;
+
+                    default:
+                        break;
+
+                }
             }
             return walletInfo;
         }
@@ -269,7 +300,7 @@ public class WalletService {
      * @param address
      * @return
      */
-    protected WalletInfo createWalletInfo(final String walletName, final  String currency, final String address) {
+    protected WalletInfo createWalletInfo(final String walletName, final String currency, final String address) {
         return walletInfoDao.create(walletName, currency, address);
     }
 
