@@ -165,9 +165,6 @@ public class WalletRestController {
      * @param walletWithMoneyRequest
      * @return
      */
-
-//    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestParam("walletName") String walletName,
-//                                                             @RequestParam("currencyName") String currencyName) {
     @RequestMapping(value = "/generateAddress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody @Validated WalletWithMoneyRequest walletWithMoneyRequest) {
 
