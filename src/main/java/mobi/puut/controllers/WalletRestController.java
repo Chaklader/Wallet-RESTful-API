@@ -160,7 +160,7 @@ public class WalletRestController {
     /**
      * generate the address from the provided wallet walletName
      * <p>
-     * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Ice","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
+     * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
      *
      * @param walletWithMoneyRequest
      * @return

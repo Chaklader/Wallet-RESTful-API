@@ -72,35 +72,35 @@ public class WalletService {
 
 
     /**
-     * takes walletName as argument and generate a wallet accordance to that
+     * take wallet name and the ccurrency as input parameter and
+     * generate WalletInfo entity for the respective parameters
      *
      * @param walletName
+     * @param currencyName
+     * @return
      */
     public synchronized WalletInfo generateAddress(final String walletName, String currencyName) {
 
-        // get the WalletInfo entity from the database with the wallet and the currency name
         WalletInfo walletInfo = walletInfoDao.getWalletInfoWithWalletNameAndCurrency(walletName, currencyName);
 
-        // generate wallet, if the wallet is not
-        // generated previously
         if (walletInfo == null) {
 
             if (genWalletMap.get(walletName) == null) {
 
-                logger.info("Wallet name that we are workign on {}", walletName);
+                String currency = currencyName.toUpperCase();
 
-                String curr = currencyName.toUpperCase();
-
-                switch (curr) {
+                switch (currency) {
 
                     case "BITCOIN": {
+
+                        logger.info("Generating the address for the currency {} and the wallet {}", currencyName, walletName);
 
                         final WalletManager walletManager = WalletManager.setupWallet(walletName);
 
                         walletManager.addWalletSetupCompletedListener((wallet) -> {
 
                             Address address = wallet.currentReceiveAddress();
-                            WalletInfo newWallet = createWalletInfo(walletName, currencyName.toLowerCase(), address.toString());
+                            WalletInfo newWallet = createWalletInfo(walletName, currencyName, address.toString());
 
                             walletMangersMap.put(newWallet.getId(), walletManager);
                             genWalletMap.remove(walletName);
@@ -111,21 +111,27 @@ public class WalletService {
                     }
 
                     case "ETHEREUM":
+                        logger.info("Generating the address for the currency {} and the wallet {}", currencyName, walletName);
                         break;
 
                     case "LITECOIN":
+                        logger.info("Generating the address for the currency {} and the wallet {}", currencyName, walletName);
                         break;
 
                     case "NEM":
+                        logger.info("Generating the address for the currency {} and the wallet {}", currencyName, walletName);
                         break;
 
                     case "RIPPLE":
+                        logger.info("Generating the address for the currency {} and the wallet {}", currencyName, walletName);
                         break;
 
                     case "DASH":
+                        logger.info("Generating the address for the currency {} and the wallet {}", currencyName, walletName);
                         break;
 
                     default:
+                        logger.info("The currency is not suported in the platform");
                         break;
 
                 }
