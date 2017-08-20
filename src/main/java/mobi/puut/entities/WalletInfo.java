@@ -1,6 +1,9 @@
 package mobi.puut.entities;
 
+import org.springframework.validation.annotation.Validated;
+
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -12,7 +15,7 @@ public class WalletInfo {
 
     @Id
     @Column(name = "id")
-    @NotNull
+//    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

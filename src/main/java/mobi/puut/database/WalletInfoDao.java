@@ -3,6 +3,8 @@ package mobi.puut.database;
 import mobi.puut.entities.WalletInfo;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,9 @@ import java.util.Objects;
  */
 @Repository
 public class WalletInfoDao {
+
+    // provide a logger for the class
+    private final Logger loggger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -46,12 +51,13 @@ public class WalletInfoDao {
      * @return return the created WalletInfo object with provided name and address
      */
     @Transactional(rollbackFor = Exception.class)
-    public WalletInfo create(String name, String address) {
+    public WalletInfo create(String name, String currency, String address) {
 
         // create the WalletInfo entity with provided name and address
         WalletInfo walletInfo = new WalletInfo();
         walletInfo.setAddress(address);
         walletInfo.setName(name);
+        walletInfo.setCurrency(currency);
 
         // persist the created instance into the database
         sessionFactory.getCurrentSession().persist(walletInfo);
@@ -67,8 +73,10 @@ public class WalletInfoDao {
     @Transactional(rollbackFor = Exception.class)
     public WalletInfo getWalletInfoWithWalletNameAndCurrency(String walletName, String currencyName) {
 
+        loggger.info("\n\nDatabase: the wallet name {} and the currency name {} \n\n", walletName, currencyName);
+
         List<WalletInfo> walletInfos = sessionFactory.getCurrentSession()
-                .createQuery("from WalletInfo where name = :name and currency =: currency")
+                .createQuery("from WalletInfo where name = :name and currency = :currency")
                 .setParameter("name", walletName)
                 .setParameter("currency", currencyName).getResultList();
 

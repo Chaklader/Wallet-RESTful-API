@@ -94,7 +94,7 @@ public class WalletService {
                 walletManager.addWalletSetupCompletedListener((wallet) -> {
 
                     Address address = wallet.currentReceiveAddress();
-                    WalletInfo newWallet = createWalletInfo(walletName, address.toString());
+                    WalletInfo newWallet = createWalletInfo(walletName, currencyName, address.toString());
 
                     walletMangersMap.put(newWallet.getId(), walletManager);
                     genWalletMap.remove(walletName);
@@ -269,8 +269,8 @@ public class WalletService {
      * @param address
      * @return
      */
-    protected WalletInfo createWalletInfo(final String walletName, final String address) {
-        return walletInfoDao.create(walletName, address);
+    protected WalletInfo createWalletInfo(final String walletName, final  String currency, final String address) {
+        return walletInfoDao.create(walletName, currency, address);
     }
 
     /**

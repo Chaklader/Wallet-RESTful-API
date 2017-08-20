@@ -2,6 +2,7 @@ package mobi.puut.controllers;
 
 import mobi.puut.entities.User;
 import mobi.puut.entities.WalletInfo;
+import mobi.puut.entities.WalletWithMoneyRequest;
 import mobi.puut.services.UserService;
 import mobi.puut.services.WalletService;
 import org.bitcoinj.core.Transaction;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -156,21 +158,30 @@ public class WalletRestController {
 
 
     // curl -X POST -d "walletName=uuuuion&currencyName=bitcoin" http://localhost:8080/rest/generateAddress
+
+    // curl -X POST  http://localhost:8080/rest/generateAddress?walletName=puut&currencyName=bitcoin
+
     // curl -H "Content-Type: application/json" -X POST -d "nonald" http://localhost:8080/rest/generateAddress
 
-    // curl -H "Content-Type: application/json" -X POST -d '{"walletName":"mkyong0","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
+    // curl -H "Content-Type: application/json" -X POST -d '{"walletName":"puut","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
 
     // curl -H "Content-Type: application/json" -X POST -d "walletName=uuuuion&currencyName=bitcoin" http://localhost:8080/rest/generateAddress
 
     /**
      * generate the address from the provided wallet walletName
      *
-     * @param walletName
+     * @param walletWithMoneyRequest
      * @return
      */
-    @RequestMapping(value = "/generateAddress", method = RequestMethod.POST)
-    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestParam("walletName") String walletName,
-                                                             @RequestParam("currencyName") String currencyName) {
+
+//    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestParam("walletName") String walletName,
+//                                                             @RequestParam("currencyName") String currencyName) {
+    @RequestMapping(value = "/generateAddress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody @Validated WalletWithMoneyRequest walletWithMoneyRequest) {
+
+        String walletName = walletWithMoneyRequest.getWalletName();
+
+        String currencyName = walletWithMoneyRequest.getCurrencyName();
 
         logger.info("walletName {} and currencyName {}", walletName, currencyName);
 
@@ -482,6 +493,7 @@ public class WalletRestController {
         String transactions;
 
         public StatusWrapper(String address, String balance, String transactions) {
+
             this.address = address;
             this.balance = balance;
             this.transactions = transactions;
@@ -521,3 +533,5 @@ public class WalletRestController {
         }
     }
 }
+
+
