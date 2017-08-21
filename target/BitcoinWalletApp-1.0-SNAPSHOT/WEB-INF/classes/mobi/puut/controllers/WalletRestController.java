@@ -3,7 +3,6 @@ package mobi.puut.controllers;
 import mobi.puut.entities.SendMoney;
 import mobi.puut.entities.User;
 import mobi.puut.entities.WalletInfo;
-import mobi.puut.entities.WalletWithMoneyRequest;
 import mobi.puut.services.UserService;
 import mobi.puut.services.WalletService;
 import org.bitcoinj.core.Transaction;
@@ -165,15 +164,15 @@ public class WalletRestController {
      * <p>
      * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
      *
-     * @param walletWithMoneyRequest is an entiry with the wallet name and the address
+     * @param createWalletWithNameAndCurrency is an entiry with the wallet name and the address
      * @return
      */
     @RequestMapping(value = "/generateAddress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody @Validated WalletWithMoneyRequest walletWithMoneyRequest) {
+    public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody @Validated CreateWalletWithNameAndCurrency createWalletWithNameAndCurrency) {
 
-        String walletName = walletWithMoneyRequest.getWalletName();
+        String walletName = createWalletWithNameAndCurrency.getWalletName();
 
-        String currencyName = walletWithMoneyRequest.getCurrencyName();
+        String currencyName = createWalletWithNameAndCurrency.getCurrencyName();
 
         logger.info("Generating wallet with the walletName {} and currencyName {}", walletName, currencyName);
 
@@ -201,10 +200,12 @@ public class WalletRestController {
     /**
      * send money to the external users with the amount and their address
      * <p>
-     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0.56","address":"mp51mPC38Wtcmybdyd9MPEB2bKnw6eYbCs"}' http://localhost:8080/rest/sendMoney/1
+     * <p>
+     * the address provided is valid bitcoin testnet address to donate
+     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0.56","address":"mwCwTceJvYV27KXBc3NJZys6CjsgsoeHmf"}' http://localhost:8080/rest/sendMoney/1
      *
-     * @param walletId
-     * @param sendMoeny
+     * @param walletId  wallet Id from where we send the money
+     * @param sendMoeny entity object retains the info such as external address and the amount of money to send out
      * @return
      */
     @RequestMapping(value = "/sendMoney/{walletId}", method = RequestMethod.POST)
@@ -219,13 +220,14 @@ public class WalletRestController {
 
         walletModel = walletService.sendMoney(walletId, sendMoeny.getAmount(), sendMoeny.getAddress());
 
-        // not able to send money
+        // The wallet is not able to send money
         if (Objects.isNull(walletModel)) {
             return new ResponseEntity<WalletModelWrapper>(HttpStatus.NOT_FOUND);
         }
 
         WalletModelWrapper walletModelWrapper = new WalletModelWrapper();
 
+        // we will send the address and balance of the user to the client
         walletModelWrapper.setAddress(walletModel.getAddress().toString());
         walletModelWrapper.setBalance(walletModel.getBalance().toString());
 
@@ -531,6 +533,42 @@ public class WalletRestController {
 
         public void setTransactions(String transactions) {
             this.transactions = transactions;
+        }
+    }
+
+
+    /*
+    *
+    * */
+    static class CreateWalletWithNameAndCurrency {
+
+        String walletName;
+
+        String currencyName;
+
+        public CreateWalletWithNameAndCurrency(String walletName, String currencyName) {
+
+            this.walletName = walletName;
+            this.currencyName = currencyName;
+        }
+
+        public CreateWalletWithNameAndCurrency() {
+        }
+
+        public String getWalletName() {
+            return walletName;
+        }
+
+        public String getCurrencyName() {
+            return currencyName;
+        }
+
+        public void setCurrencyName(String currencyName) {
+            this.currencyName = currencyName;
+        }
+
+        public void setWalletName(String walletName) {
+            this.walletName = walletName;
         }
     }
 }
