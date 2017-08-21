@@ -292,6 +292,7 @@ public class WalletService {
      * @return return the user of concern
      */
     protected User getCurrentUser() {
+
         User user = userDao.getById(1); //TODO
         return user;
     }
@@ -321,6 +322,8 @@ public class WalletService {
                                      final String message, final Coin balance) {
         Status status = new Status();
         status.setAddress(address.length() > 90 ? address.substring(0, 89) : address);
+
+//        status.setUser_id(1);
         status.setUser_id(user.getId());
         status.setWallet_id(walletId);
         status.setTransaction(message.length() > 90 ? message.substring(0, 89) : message);

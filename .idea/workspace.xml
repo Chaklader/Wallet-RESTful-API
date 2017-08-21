@@ -7,170 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ceedfe0a-cfb0-4383-977e-18abdcfb7aea" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/Wallet.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/log4j.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/config/ApplicationConfiguration.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/config/ApplicationConfiguration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/config/DatabaseConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/config/DatabaseConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/config/ServiceConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/config/ServiceConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/config/WebInitializer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/config/WebInitializer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/BitcoinWalletsController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/BitcoinWalletsController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/ErrorHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/ErrorHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletManager$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletManager.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletModel$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletModel$ProgressBarUpdater.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletModel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$StatusWrapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$UserWrapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$WalletInfoWrapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$WalletModelWrapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletSetupCompletedListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletSetupCompletedListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/database/StatusDao.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/database/StatusDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/database/UserDao.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/database/UserDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/database/WalletInfoDao.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/database/WalletInfoDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/entities/Status.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/entities/Status.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/entities/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/entities/User.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/entities/WalletInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/entities/WalletInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/entities/WalletWithMoneyRequest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/entities/WalletWithMoneyRequest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/services/UserService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/services/UserService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/services/WalletService$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/services/WalletService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/services/WalletService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/jsps/home.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/antlr-2.7.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/bitcoinj-core-0.14.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/classmate-1.3.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/commons-beanutils-1.9.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/commons-collections-3.2.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/commons-dbcp-1.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/commons-digester-1.8.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/commons-logging-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/commons-pool-1.5.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/commons-validator-1.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/core-1.51.0.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/core-2.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/dom4j-1.6.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/guava-18.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/hibernate-commons-annotations-5.0.1.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/hibernate-core-5.2.10.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/hibernate-validator-5.4.1.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jackson-annotations-2.9.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jackson-core-2.9.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jackson-databind-2.9.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jandex-2.0.3.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/javase-2.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/javassist-3.20.0-GA.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jboss-logging-3.3.0.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.0.1.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jcip-annotations-1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jsr305-2.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jsr311-api-1.1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/jstl-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/log4j-1.2.17.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/mysql-connector-java-6.0.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/okhttp-2.7.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/okio-1.6.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/orchid-1.2.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/protobuf-java-2.6.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/qrgen-1.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/scrypt-1.4.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/slf4j-api-1.7.20.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/slf4j-log4j12-1.7.20.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-aop-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-beans-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-context-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-core-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-expression-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-jdbc-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-orm-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-security-acl-4.2.3.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-security-config-4.2.3.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-security-core-4.2.3.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-security-taglibs-4.2.3.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-security-web-4.2.3.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-test-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-tx-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-web-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-4.3.10.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/lib/validation-api-1.1.0.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/resources/css/app.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/resources/css/app.css.backup" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/resources/css/main.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/resources/images/wallet_database.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/resources/images/wallet_db.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/resources/js/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Wallet.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/log4j.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/config/ApplicationConfiguration.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/config/ApplicationConfiguration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/config/DatabaseConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/config/DatabaseConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/config/ServiceConfig.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/config/ServiceConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/config/WebInitializer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/config/WebInitializer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/BitcoinWalletsController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/BitcoinWalletsController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/ErrorHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/ErrorHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletManager$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletManager.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletModel$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletModel$ProgressBarUpdater.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletModel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$StatusWrapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$UserWrapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$WalletInfoWrapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$WalletModelWrapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletSetupCompletedListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletSetupCompletedListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/database/StatusDao.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/database/StatusDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/database/UserDao.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/database/UserDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/database/WalletInfoDao.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/database/WalletInfoDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/entities/Status.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/entities/Status.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/entities/User.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/entities/User.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/entities/WalletInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/entities/WalletInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/entities/WalletWithMoneyRequest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/entities/WalletWithMoneyRequest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/services/UserService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/services/UserService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/services/WalletService$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/services/WalletService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/services/WalletService.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Test.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/entities/SendMoney.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletService.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -196,11 +37,34 @@
       <file leaf-file-name="WalletRestController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="162">
+              <caret line="203" column="164" lean-forward="true" selection-start-line="203" selection-start-column="7" selection-end-line="203" selection-end-column="164" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Status.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/entities/Status.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="133" column="5" lean-forward="true" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
+              <folding>
+                <element signature="e#1917#1918#0" expanded="true" />
+                <element signature="e#1955#1956#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/config/DatabaseConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -211,6 +75,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -240,7 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/mobi/puut/config/ApplicationConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/controllers/BitcoinWalletsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/database/StatusDaoHibernate.java" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDaoHibernate.java" />
@@ -258,7 +122,10 @@
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/entities/WalletWithMoneyRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/entities/WalletInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mobi/puut/config/ApplicationConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mobi/puut/entities/SendMoney.java" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletService.java" />
+        <option value="$PROJECT_DIR$/Test.html" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java" />
       </list>
     </option>
@@ -404,6 +271,47 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="WalletRestApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WalletRestApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WalletRestApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WalletRestApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WalletRestApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WalletRestApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WalletRestApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WalletRestApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WalletRestApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WalletRestApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="jsps" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -423,6 +331,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Database Driver" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -652,12 +561,12 @@
       <workItem from="1503237214943" duration="249000" />
       <workItem from="1503238985040" duration="195000" />
       <workItem from="1503282283085" duration="452000" />
-      <workItem from="1503283170730" duration="304000" />
+      <workItem from="1503283170730" duration="3760000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63838000" />
+    <option name="totallyTimeSpent" value="67294000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -675,36 +584,36 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5028612" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39941692" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3309038" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3644315" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3644315" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12390671" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27259475" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29756796" sideWeight="0.508658" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3190272" sideWeight="0.49134198" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3309038" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,27 +626,25 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java</url>
+          <line>219</line>
+          <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletService.java</url>
+          <line>173</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/config/DatabaseConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="7" lean-forward="false" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BitcoinWalletApp.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -862,13 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/config/ApplicationConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BitcoinWalletApp.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -960,14 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/entities/Status.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="17" column="55" lean-forward="false" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/services/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -1026,14 +918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/config/DatabaseConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/entities/WalletInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
@@ -1057,16 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
@@ -1077,10 +951,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/config/ApplicationConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="88" column="1" lean-forward="true" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/entities/SendMoney.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding>
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#358#359#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#458#459#0" expanded="true" />
+            <element signature="e#502#503#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/config/DatabaseConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/entities/Status.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="133" column="5" lean-forward="true" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
+          <folding>
+            <element signature="e#1917#1918#0" expanded="true" />
+            <element signature="e#1955#1956#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-191">
+          <caret line="276" column="0" lean-forward="true" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="162">
+          <caret line="203" column="164" lean-forward="true" selection-start-line="203" selection-start-column="7" selection-end-line="203" selection-end-column="164" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

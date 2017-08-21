@@ -1,5 +1,6 @@
 package mobi.puut.controllers;
 
+import mobi.puut.entities.SendMoney;
 import mobi.puut.entities.User;
 import mobi.puut.entities.WalletInfo;
 import mobi.puut.entities.WalletWithMoneyRequest;
@@ -120,13 +121,13 @@ public class WalletRestController {
 
 
     /**
-     * get the wallet address with the currency name and the wallet name
+     * get the wallet the id or address with the currency name and the wallet name
      * <p>
-     * returns the Long value for the walletInfo
+     * returns the Long value for the walletInfo if no address requirement is asked
      * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut | json
      * <p>
      * <p>
-     * returns the String value for the walletInfo address
+     * returns the String value for the walletInfo address if the address required is true
      * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut/true | json
      *
      * @param currencyName
@@ -136,8 +137,8 @@ public class WalletRestController {
     @RequestMapping(value = "wallets/{currencyName}/{walletName}", method = RequestMethod.GET
             , produces = "text/html")
     public ResponseEntity<?> getAddressWithCurrencyAndWalletName(@PathVariable("currencyName") String currencyName,
-                                                                 @PathVariable("walletName") String walletName
-            , @RequestParam(value = "address", required = false) boolean address) {
+                                                                 @PathVariable("walletName") String walletName,
+                                                                 @RequestParam(value = "address", required = false) boolean address) {
 
         logger.info("The currency name is {} and wallet name is {}", currencyName, walletName);
 
@@ -164,7 +165,7 @@ public class WalletRestController {
      * <p>
      * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
      *
-     * @param walletWithMoneyRequest
+     * @param walletWithMoneyRequest is an entiry with the wallet name and the address
      * @return
      */
     @RequestMapping(value = "/generateAddress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -174,7 +175,7 @@ public class WalletRestController {
 
         String currencyName = walletWithMoneyRequest.getCurrencyName();
 
-        logger.info("walletName {} and currencyName {}", walletName, currencyName);
+        logger.info("Generating wallet with the walletName {} and currencyName {}", walletName, currencyName);
 
         // return if the wallet name or the currency is null
         if (Objects.isNull(walletName) || Objects.isNull(currencyName)) {
@@ -188,24 +189,27 @@ public class WalletRestController {
         }
 
         WalletInfoWrapper walletInfoWrapper = new WalletInfoWrapper();
+
         walletInfoWrapper.setName(walletInfo.getName());
+        walletInfoWrapper.setAddress(walletInfo.getAddress());
+        walletInfoWrapper.setCurrencyName(walletInfo.getCurrency());
 
         return new ResponseEntity<WalletInfoWrapper>(walletInfoWrapper, HttpStatus.CREATED);
     }
 
 
     /**
-     * send money to the external users
-     * curl -X POST -d "amount=0.56&address=myuoXZrmSKtybRzkR5GfJm4LNtUoUorqsn" http://localhost:8080/rest/sendMoney/3
+     * send money to the external users with the amount and their address
+     * <p>
+     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0.56","address":"mp51mPC38Wtcmybdyd9MPEB2bKnw6eYbCs"}' http://localhost:8080/rest/sendMoney/1
      *
-     * @param walletId
-     * @param amount
-     * @param address
+     * @param walletId  wallet Id from where we send the money
+     * @param sendMoeny entity object retains the info such as external address and the amount of money to send out
      * @return
      */
     @RequestMapping(value = "/sendMoney/{walletId}", method = RequestMethod.POST)
     public ResponseEntity<WalletModelWrapper> sendMoneyByWalletId(@PathVariable("walletId") Long walletId,
-                                                                  @RequestBody String amount, @RequestBody String address) {
+                                                                  @RequestBody SendMoney sendMoeny) {
 
         WalletModel walletModel = getWalletModel(walletId);
 
@@ -213,9 +217,15 @@ public class WalletRestController {
             return new ResponseEntity<WalletModelWrapper>(HttpStatus.NOT_FOUND);
         }
 
-        walletModel = walletService.sendMoney(walletId, amount, address);
+        walletModel = walletService.sendMoney(walletId, sendMoeny.getAmount(), sendMoeny.getAddress());
+
+        // not able to send money
+        if (Objects.isNull(walletModel)) {
+            return new ResponseEntity<WalletModelWrapper>(HttpStatus.NOT_FOUND);
+        }
 
         WalletModelWrapper walletModelWrapper = new WalletModelWrapper();
+
         walletModelWrapper.setAddress(walletModel.getAddress().toString());
         walletModelWrapper.setBalance(walletModel.getBalance().toString());
 
