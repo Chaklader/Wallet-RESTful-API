@@ -113,10 +113,13 @@ public class WalletRestController {
 
 
     // TODO
-    // A. write a RESTful method using the wallet id to get info from the status table
+    // write a RESTful method using the wallet id to get info from the status table
 
     // TODO
-    // B. write a RESTful method for the receiving operations
+    // write a RESTful method for the receiving operations
+
+    // TODO
+    // get the list of the transactions for the particular user
 
 
     /**
@@ -212,7 +215,7 @@ public class WalletRestController {
     public ResponseEntity<WalletModelWrapper> sendMoneyByWalletId(@PathVariable("walletId") Long walletId,
                                                                   @RequestBody SendMoney sendMoeny) {
 
-        WalletModel walletModel = getWalletModel(walletId);
+        WalletModel walletModel = getWalletModelByWalletId(walletId);
 
         if (Objects.isNull(walletModel)) {
             return new ResponseEntity<WalletModelWrapper>(HttpStatus.NOT_FOUND);
@@ -277,7 +280,7 @@ public class WalletRestController {
     @RequestMapping(value = "/balanace/{id}", method = RequestMethod.GET)
     public ResponseEntity<String> getWalletBalanceById(@PathVariable("id") long id) {
 
-        WalletModel walletModel = getWalletModel(id);
+        WalletModel walletModel = getWalletModelByWalletId(id);
 
         if (Objects.isNull(walletModel)) {
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
@@ -298,7 +301,7 @@ public class WalletRestController {
     @RequestMapping(value = "/transactions/{walletId}", method = RequestMethod.GET)
     public ResponseEntity<List<String>> readAllTransactionsByWalletId(@PathVariable("walletId") Long walletId) {
 
-        WalletModel walletModel = getWalletModel(walletId);
+        WalletModel walletModel = getWalletModelByWalletId(walletId);
 
         if (Objects.isNull(walletModel)) {
             return new ResponseEntity<List<String>>(HttpStatus.NOT_FOUND);
@@ -331,52 +334,69 @@ public class WalletRestController {
         return new ResponseEntity<List<String>>(list, HttpStatus.OK);
     }
 
-
-    // TODO
-    // get the list of the transactions for the particular user
-
-
     /**
-     * http://localhost:8080/rest/walletsNumber
+     * curl -G http://localhost:8080/rest/walletsNumber
      *
      * @return return the number of wallet created as String
      */
     @ResponseBody
     @RequestMapping("/walletsNumber")
     public String getWalletsCount() {
+
         List<WalletInfo> wallets = walletService.getAllWallets();
+
+        if (Objects.isNull(wallets) || wallets.isEmpty()) {
+            return "No wallet found";
+        }
+
+        // we do have some wallets, return the size
         return String.valueOf(wallets.size());
     }
 
 
     /**
-     * http://localhost:8080/rest/walletBalance
+     * curl -X GET http://localhost:8080/rest/walletBalance?walletId=walletId
      *
-     * @param id takes wallet index as the Long ID argument
+     * @param walletId takes wallet index as the Long ID argument
      * @return return the balance of the request wallet
      */
     @ResponseBody
     @RequestMapping("/walletBalance")
-    public String getWalletBalance(@RequestParam final Long id) {
+    public String getWalletBalance(@RequestParam final Long walletId) {
 
-        WalletModel walletModel = getWalletModel(id);
+        WalletModel walletModel = getWalletModelByWalletId(walletId);
+
+        if (Objects.isNull(walletModel)) {
+            return String.format("\n No balance with the wallet Id %s \n\n", walletId);
+        }
+
         return String.valueOf(walletModel.getBalanceFloatFormat());
     }
 
 
     /**
-     * http://localhost:8080/rest/walletTransactionsNumber
+     * curl -X GET http://localhost:8080/rest/walletTransactionsNumber?walletId=walletId
      *
-     * @param id takes wallet index as the Long ID argument
+     * @param walletId takes wallet index as the Long ID argument
      * @return return the number of transaction executed on
      * the requested wallet
      */
     @ResponseBody
     @RequestMapping("/walletTransactionsNumber")
-    public String getWalletTransactionsNumber(@RequestParam final Long id) {
+    public String getWalletTransactionsNumber(@RequestParam final Long walletId) {
 
-        WalletModel walletModel = getWalletModel(id);
+        WalletModel walletModel = getWalletModelByWalletId(walletId);
+
+        if (Objects.isNull(walletModel)) {
+            return String.format("\n No Wallet model with the Id %s \n\n", walletId);
+        }
+
         List<Transaction> history = walletModel.getTransactions();
+
+        if (Objects.isNull(history) || history.isEmpty()) {
+            return String.format("No trnsactions history found for the Id %s", walletId);
+        }
+
         return String.valueOf(history.size());
     }
 
@@ -387,7 +407,7 @@ public class WalletRestController {
      * @param id
      * @return
      */
-    private WalletModel getWalletModel(Long id) {
+    private WalletModel getWalletModelByWalletId(Long id) {
         return walletService.getWalletModel(id);
     }
 

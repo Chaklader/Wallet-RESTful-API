@@ -7,22 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ceedfe0a-cfb0-4383-977e-18abdcfb7aea" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$CreateWalletWithNameAndCurrency.class" afterPath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$CreateWalletWithNameAndCurrency.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$StatusWrapper.class" afterPath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$StatusWrapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$UserWrapper.class" afterPath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$UserWrapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$WalletInfoWrapper.class" afterPath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$WalletInfoWrapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$WalletModelWrapper.class" afterPath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController$WalletModelWrapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController.class" afterPath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$CreateWalletWithNameAndCurrency.class" afterPath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$CreateWalletWithNameAndCurrency.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$StatusWrapper.class" afterPath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$StatusWrapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$UserWrapper.class" afterPath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$UserWrapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$WalletInfoWrapper.class" afterPath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$WalletInfoWrapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$WalletModelWrapper.class" afterPath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController$WalletModelWrapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController.class" afterPath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController.java" afterPath="$PROJECT_DIR$/target/BitcoinWalletApp-1.0-SNAPSHOT/WEB-INF/classes/mobi/puut/controllers/WalletRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController.java" afterPath="$PROJECT_DIR$/target/classes/mobi/puut/controllers/WalletRestController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,26 +33,23 @@
       <file leaf-file-name="WalletRestController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
+            <state relative-caret-position="124">
+              <caret line="377" column="88" lean-forward="true" selection-start-line="377" selection-start-column="19" selection-end-line="377" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#14690#14691#0" expanded="true" />
+                <element signature="e#14745#14746#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WalletModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletModel.java">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="48" column="5" lean-forward="false" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-              <folding>
-                <element signature="e#1039#1040#0" expanded="true" />
-                <element signature="e#1073#1074#0" expanded="true" />
-                <element signature="e#2009#2010#0" expanded="true" />
-                <element signature="e#2044#2045#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -568,12 +550,12 @@
       <workItem from="1503238985040" duration="195000" />
       <workItem from="1503282283085" duration="452000" />
       <workItem from="1503283170730" duration="7521000" />
-      <workItem from="1503294681826" duration="427000" />
+      <workItem from="1503294681826" duration="1750000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71482000" />
+    <option name="totallyTimeSpent" value="72805000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -645,6 +627,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#14690#14691#0" expanded="true" />
+            <element signature="e#14745#14746#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -662,6 +646,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#14690#14691#0" expanded="true" />
+            <element signature="e#14745#14746#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -679,6 +665,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#14690#14691#0" expanded="true" />
+            <element signature="e#14745#14746#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -696,6 +684,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#14690#14691#0" expanded="true" />
+            <element signature="e#14745#14746#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -706,6 +696,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#14690#14691#0" expanded="true" />
+            <element signature="e#14745#14746#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -716,6 +708,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#14690#14691#0" expanded="true" />
+            <element signature="e#14745#14746#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -726,6 +720,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#14690#14691#0" expanded="true" />
+            <element signature="e#14745#14746#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -736,6 +732,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#14690#14691#0" expanded="true" />
+            <element signature="e#14745#14746#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -777,13 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -950,17 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="334" column="29" lean-forward="false" selection-start-line="334" selection-start-column="29" selection-end-line="334" selection-end-column="29" />
-          <folding>
-            <element signature="e#11536#11537#0" expanded="false" />
-            <element signature="e#11596#11597#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/config/DatabaseConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -980,25 +960,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="284" column="24" lean-forward="true" selection-start-line="284" selection-start-column="24" selection-end-line="284" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="48" column="5" lean-forward="false" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+        <state relative-caret-position="157">
+          <caret line="111" column="5" lean-forward="true" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
           <folding>
-            <element signature="e#1039#1040#0" expanded="true" />
-            <element signature="e#1073#1074#0" expanded="true" />
             <element signature="e#2009#2010#0" expanded="true" />
             <element signature="e#2044#2045#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
+        <state relative-caret-position="124">
+          <caret line="377" column="88" lean-forward="true" selection-start-line="377" selection-start-column="19" selection-end-line="377" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#14690#14691#0" expanded="true" />
+            <element signature="e#14745#14746#0" expanded="true" />
           </folding>
         </state>
       </provider>
