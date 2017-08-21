@@ -332,6 +332,6 @@ public class WalletService {
     }
 
     public void deleteWalletInfoById(Long id) {
-        walletInfoDao.deleteWalletInfoById(id);
+        walletInfoDao.deleteWalletInfoByWalletId(id);
     }
 }

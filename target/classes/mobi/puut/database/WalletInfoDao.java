@@ -1,5 +1,6 @@
 package mobi.puut.database;
 
+import mobi.puut.entities.Status;
 import mobi.puut.entities.WalletInfo;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -65,10 +66,33 @@ public class WalletInfoDao {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void deleteWalletInfoById(Long theId) {
+    public void deleteWalletInfoByWalletId(Long walletId) {
+
+        // transaction is recored in the status table with the wallet Id
+        // we cant delete the WalletInfo entity as being used foreign key in the Status table
+        if(getStatusRetentionInfoByWalletId(walletId)) {
+            loggger.info("\n\nUnable to delete the wallet with id {} as being used foregin key " +
+                    "in the Status table\n\n", walletId);
+            return;
+        }
+
         sessionFactory.getCurrentSession().createQuery("delete WalletInfo where id = :id")
-                .setParameter("id", theId).executeUpdate();
+                .setParameter("id", walletId).executeUpdate();
     }
+
+
+    // get the status with the wallet Id
+    @Transactional(rollbackFor = Exception.class)
+    public boolean getStatusRetentionInfoByWalletId(Long id) {
+
+        List<Status> statuses = sessionFactory.getCurrentSession()
+                .createQuery("from Status where wallet_id = :id")
+                .setParameter("id", id)
+                .getResultList();
+
+        return Objects.isNull(statuses) || statuses.isEmpty() ? false : true;
+    }
+
 
     @Transactional(rollbackFor = Exception.class)
     public WalletInfo getWalletInfoWithWalletNameAndCurrency(String walletName, String currencyName) {

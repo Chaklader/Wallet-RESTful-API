@@ -235,29 +235,33 @@ public class WalletRestController {
     }
 
 
-    // curl -i -X DELETE http://localhost:8080/rest/delete/9
-
     /**
      * delete a wallet with the Id
+     * curl -i -X DELETE http://localhost:8080/rest/delete/4
      *
      * @param walletInfoId
      * @return
      */
+
+    // check if the id is not being used as foreign key in the status table
     @RequestMapping(value = "/delete/{walletInfoId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<WalletInfoWrapper> deleteWalletInfoById(@PathVariable("walletInfoId") long walletInfoId) {
 
         WalletInfo walletInfo = getWalletInfo(walletInfoId);
 
-        if (walletInfo == null) {
-            System.out.println("The WalletInfo obj with id = " + walletInfoId + " is not found");
+        if (Objects.isNull(walletInfo)) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_FOUND);
         }
 
+        // it wont delete the wallet of any transaction is initiated
         walletService.deleteWalletInfoById(walletInfoId);
 
         WalletInfoWrapper walletInfoWrapper = new WalletInfoWrapper();
+
+        // get to know what is just deleted
         walletInfoWrapper.setName(walletInfo.getName());
         walletInfoWrapper.setAddress(walletInfo.getAddress());
+        walletInfoWrapper.setCurrencyName(walletInfo.getCurrency());
 
         return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NO_CONTENT);
     }
