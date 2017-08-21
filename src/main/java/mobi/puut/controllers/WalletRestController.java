@@ -37,6 +37,7 @@ public class WalletRestController {
 
     /**
      * get all the WalletInfo entities
+     * <p>
      * curl -G http://localhost:8080/rest/wallets | json
      *
      * @return
@@ -52,7 +53,6 @@ public class WalletRestController {
 
         List<WalletInfoWrapper> walletInfoWrappers = new ArrayList<>();
 
-        // hiding the entity ids for the security purposes
         walletInfos.forEach(w -> walletInfoWrappers.add(new WalletInfoWrapper(w.getName(), w.getAddress())));
 
         return new ResponseEntity<List<WalletInfoWrapper>>(walletInfoWrappers, HttpStatus.OK);
@@ -61,6 +61,7 @@ public class WalletRestController {
 
     /**
      * get all the users
+     * <p>
      * curl -G http://localhost:8080/rest/users | json
      *
      * @return
@@ -76,7 +77,6 @@ public class WalletRestController {
 
         List<UserWrapper> userWrappers = new ArrayList<>();
 
-        // hiding the user Ids for security purpose
         users.forEach(user -> userWrappers.add(new UserWrapper(user.getName())));
 
         return new ResponseEntity<List<UserWrapper>>(userWrappers, HttpStatus.OK);
@@ -85,8 +85,7 @@ public class WalletRestController {
 
     /**
      * get the info of the specific wallet
-     * curl -i -H "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
-     * curl -G "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
+     * <p>
      * curl -X GET "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
      *
      * @param id
@@ -103,9 +102,11 @@ public class WalletRestController {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_FOUND);
         }
 
-        // set the wallet name, address and the currency in the walletInfo wrapper
-        WalletInfoWrapper walletInfoWrapper = new WalletInfoWrapper(walletInfo.getName(),
-                walletInfo.getAddress(), walletInfo.getCurrency());
+        WalletInfoWrapper walletInfoWrapper = new WalletInfoWrapper();
+
+        walletInfoWrapper.setName(walletInfo.getName());
+        walletInfoWrapper.setAddress(walletInfo.getAddress());
+        walletInfoWrapper.setCurrencyName(walletInfo.getCurrency());
 
         return new ResponseEntity<WalletInfoWrapper>(walletInfoWrapper, HttpStatus.OK);
     }
@@ -139,6 +140,7 @@ public class WalletRestController {
             , @RequestParam(value = "address", required = false) boolean address) {
 
         logger.info("The currency name is {} and wallet name is {}", currencyName, walletName);
+
         WalletInfo walletInfo = walletService.getWalletInfoWithCurrencyAndWalletName(walletName, currencyName);
 
         if (Objects.isNull(walletInfo)) {
@@ -193,8 +195,8 @@ public class WalletRestController {
 
 
     /**
-     * curl -X POST -d "amount=0.56&address=myuoXZrmSKtybRzkR5GfJm4LNtUoUorqsn" http://localhost:8080/rest/sendMoney/3
      * send money to the external users
+     * curl -X POST -d "amount=0.56&address=myuoXZrmSKtybRzkR5GfJm4LNtUoUorqsn" http://localhost:8080/rest/sendMoney/3
      *
      * @param walletId
      * @param amount
