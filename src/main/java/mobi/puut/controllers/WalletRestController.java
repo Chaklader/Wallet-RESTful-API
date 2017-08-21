@@ -87,15 +87,16 @@ public class WalletRestController {
      * <p>
      * curl -X GET "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
      *
-     * @param id
+     * @param walletId
      * @return
      */
-    @GetMapping(value = "/wallets/{id}")
-    public ResponseEntity<WalletInfoWrapper> getWalletById(@PathVariable("id") long id) {
+    @GetMapping(value = "/wallets/{walletId:[\\d]+}")
+//    @GetMapping(value = "/wallets/{walletId}")
+    public ResponseEntity<WalletInfoWrapper> getWalletById(@PathVariable("walletId") long walletId) {
 
-        logger.info("Get the wallet with Id =  {}", id);
+        logger.info("Get the wallet with Id =  {}", walletId);
 
-        WalletInfo walletInfo = getWalletInfo(id);
+        WalletInfo walletInfo = getWalletInfo(walletId);
 
         if (walletInfo == null) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_FOUND);
@@ -199,7 +200,7 @@ public class WalletRestController {
      * @param sendMoeny entity object retains the info such as external address and the amount of money to send out
      * @return
      */
-    @PostMapping(value = "/sendMoney/{walletId}")
+    @PostMapping(value = "/sendMoney/{walletId:[\\d]+}")
     public ResponseEntity<WalletModelWrapper> sendMoneyByWalletId(@PathVariable("walletId") Long walletId,
                                                                   @RequestBody SendMoney sendMoeny) {
 

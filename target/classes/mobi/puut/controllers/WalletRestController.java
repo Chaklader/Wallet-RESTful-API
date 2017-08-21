@@ -41,7 +41,7 @@ public class WalletRestController {
      *
      * @return
      */
-    @RequestMapping(value = "/wallets", method = RequestMethod.GET)
+    @GetMapping(value = "/wallets")
     public ResponseEntity<List<WalletInfoWrapper>> getAllWalletInfo() {
 
         List<WalletInfo> walletInfos = walletService.getAllWallets();
@@ -65,7 +65,7 @@ public class WalletRestController {
      *
      * @return
      */
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @GetMapping(value = "/users")
     public ResponseEntity<List<UserWrapper>> getAllUsers() {
 
         List<User> users = userService.getAllUsers();
@@ -87,15 +87,16 @@ public class WalletRestController {
      * <p>
      * curl -X GET "Accept: application/json" http://localhost:8080/rest/wallets/1 | json
      *
-     * @param id
+     * @param walletId
      * @return
      */
-    @RequestMapping(value = "/wallets/{id}", method = RequestMethod.GET)
-    public ResponseEntity<WalletInfoWrapper> getWalletById(@PathVariable("id") long id) {
+    @GetMapping(value = "/wallets/{walletId:[\\d]+}")
+//    @GetMapping(value = "/wallets/{walletId}")
+    public ResponseEntity<WalletInfoWrapper> getWalletById(@PathVariable("walletId") long walletId) {
 
-        logger.info("Get the wallet with Id =  {}", id);
+        logger.info("Get the wallet with Id =  {}", walletId);
 
-        WalletInfo walletInfo = getWalletInfo(id);
+        WalletInfo walletInfo = getWalletInfo(walletId);
 
         if (walletInfo == null) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_FOUND);
@@ -125,8 +126,7 @@ public class WalletRestController {
      * @param walletName
      * @return
      */
-    @RequestMapping(value = "wallets/{currencyName}/{walletName}", method = RequestMethod.GET
-            , produces = "text/html")
+    @GetMapping(value = "wallets/{currencyName}/{walletName}", produces = "text/html")
     public ResponseEntity<?> getAddressWithCurrencyAndWalletName(@PathVariable("currencyName") String currencyName,
                                                                  @PathVariable("walletName") String walletName,
                                                                  @RequestParam(value = "address", required = false) boolean address) {
@@ -159,7 +159,7 @@ public class WalletRestController {
      * @param createWalletWithNameAndCurrency is an entiry with the wallet name and the address
      * @return
      */
-    @RequestMapping(value = "/generateAddress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/generateAddress", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<WalletInfoWrapper> generateAddress(@RequestBody @Validated CreateWalletWithNameAndCurrency createWalletWithNameAndCurrency) {
 
         String walletName = createWalletWithNameAndCurrency.getWalletName();
@@ -200,7 +200,8 @@ public class WalletRestController {
      * @param sendMoeny entity object retains the info such as external address and the amount of money to send out
      * @return
      */
-    @RequestMapping(value = "/sendMoney/{walletId}", method = RequestMethod.POST)
+    @PostMapping(value = "/sendMoney/{walletId:[\\d]+}")
+//    @PostMapping(value = "/sendMoney/{walletId}")
     public ResponseEntity<WalletModelWrapper> sendMoneyByWalletId(@PathVariable("walletId") Long walletId,
                                                                   @RequestBody SendMoney sendMoeny) {
 
@@ -236,7 +237,7 @@ public class WalletRestController {
      */
 
     // check if the id is not being used as foreign key in the status table
-    @RequestMapping(value = "/delete/{walletInfoId}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/delete/{walletInfoId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<WalletInfoWrapper> deleteWalletInfoById(@PathVariable("walletInfoId") long walletInfoId) {
 
         WalletInfo walletInfo = getWalletInfo(walletInfoId);
@@ -266,7 +267,7 @@ public class WalletRestController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/balanace/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/balanace/{id}")
     public ResponseEntity<String> getWalletBalanceById(@PathVariable("id") long id) {
 
         WalletModel walletModel = getWalletModelByWalletId(id);
@@ -287,8 +288,8 @@ public class WalletRestController {
      * @param walletId
      * @return
      */
-    @RequestMapping(value = "/transactions/{walletId}", method = RequestMethod.GET)
-    public ResponseEntity<List<String>> readAllTransactionsByWalletId(@PathVariable("walletId") Long walletId) {
+    @GetMapping(value = "/transactions/{walletId}")
+    public ResponseEntity<List<String>> getAllTransactionsByWalletId(@PathVariable("walletId") Long walletId) {
 
         WalletModel walletModel = getWalletModelByWalletId(walletId);
 
