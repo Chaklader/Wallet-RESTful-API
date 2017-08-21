@@ -304,16 +304,36 @@ public class WalletRestController {
             return new ResponseEntity<List<String>>(HttpStatus.NOT_FOUND);
         }
 
+        // collects the list of the transactions from the blockchain
+        // NOTE: we do store transactions in the database, but, to deliver the info
+        // to the client, we aquire it from the blockchain
         List<Transaction> transactions = walletModel.getTransactions();
 
         List<String> list = new ArrayList<>();
+
+        // No transactions occured
+        if (Objects.isNull(transactions) || transactions.isEmpty()) {
+
+            logger.info("No transaction occured");
+
+            list.add("No transaction occured");
+            return new ResponseEntity<List<String>>(list, HttpStatus.NOT_FOUND);
+        }
+
+        // we do have some transactions, lets make them in human readable format
+        //  and, add in the list to return to the client
 
         for (Transaction transaction : transactions) {
             list.add(walletModel.addTransactionHistory(transaction));
         }
 
+        logger.info("We do have some trnsactions");
         return new ResponseEntity<List<String>>(list, HttpStatus.OK);
     }
+
+
+    // TODO
+    // get the list of the transactions for the particular user
 
 
     /**
