@@ -52,7 +52,7 @@ public class WalletRestController {
 
         List<WalletInfoWrapper> walletInfoWrappers = new ArrayList<>();
 
-        walletInfos.forEach(w -> walletInfoWrappers.add(new WalletInfoWrapper(w.getName(), w.getAddress())));
+        walletInfos.forEach(w -> walletInfoWrappers.add(new WalletInfoWrapper(w.getName(), w.getAddress(), w.getCurrency())));
 
         return new ResponseEntity<List<WalletInfoWrapper>>(walletInfoWrappers, HttpStatus.OK);
     }
@@ -111,16 +111,6 @@ public class WalletRestController {
     }
 
 
-    // TODO
-    // write a RESTful method for the receiving operations
-
-    // TODO
-    // write a RESTful method using the wallet id to get all the info's from the status table
-
-    // TODO
-    // get the list of the transactions for the particular user
-
-
     /**
      * get the wallet the id or address with the currency name and the wallet name
      * <p>
@@ -162,7 +152,7 @@ public class WalletRestController {
 
 
     /**
-     * generate the address from the provided wallet walletName
+     * generate the address from the provided wallet walletName and currency
      * <p>
      * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream100","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
      *
@@ -271,7 +261,7 @@ public class WalletRestController {
 
     /**
      * get the wallet balance with the Id
-     * curl -G http://localhost:8080/rest/balanace/1 | json
+     * curl -G http://localhost:8080/rest/balanace/4 | json
      *
      * @param id
      * @return
@@ -649,6 +639,16 @@ public class WalletRestController {
             this.amount = amount;
         }
     }
+
+
+    // TODO
+    // write a RESTful method for the receiving operations
+
+    // TODO
+    // write a RESTful method using the wallet id to get all the info's from the status table
+
+    // TODO
+    // get the list of the transactions for the particular user
 }
 
 
