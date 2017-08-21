@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Chaklader on 6/24/17.
@@ -39,5 +40,18 @@ public class StatusDao {
         return sessionFactory.getCurrentSession()
                 .createQuery("from Status where wallet_id = :walletId")
                 .setParameter("walletId", walletId).getResultList();
+    }
+
+
+    // get the status with the wallet Id
+    @Transactional(rollbackFor = Exception.class)
+    public boolean getStatusRetentionInfoByWalletId(Long id) {
+
+        List<Status> statuses = sessionFactory.getCurrentSession()
+                .createQuery("from Status where wallet_id = :id")
+                .setParameter("id", id)
+                .getResultList();
+
+        return Objects.isNull(statuses) || statuses.isEmpty() ? false : true;
     }
 }

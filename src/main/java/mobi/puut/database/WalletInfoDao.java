@@ -22,6 +22,11 @@ public class WalletInfoDao {
     // provide a logger for the class
     private final Logger loggger = LoggerFactory.getLogger(getClass());
 
+
+    // we can autowire in the same directory as well.
+    @Autowired
+    StatusDao statusDao;
+
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -70,7 +75,7 @@ public class WalletInfoDao {
 
         // transaction is recored in the status table with the wallet Id
         // we cant delete the WalletInfo entity as being used foreign key in the Status table
-        if(getStatusRetentionInfoByWalletId(walletId)) {
+        if (statusDao.getStatusRetentionInfoByWalletId(walletId)) {
             loggger.info("\n\nUnable to delete the wallet with id {} as being used foregin key " +
                     "in the Status table\n\n", walletId);
             return;
@@ -80,24 +85,8 @@ public class WalletInfoDao {
                 .setParameter("id", walletId).executeUpdate();
     }
 
-
-    // get the status with the wallet Id
-    @Transactional(rollbackFor = Exception.class)
-    public boolean getStatusRetentionInfoByWalletId(Long id) {
-
-        List<Status> statuses = sessionFactory.getCurrentSession()
-                .createQuery("from Status where wallet_id = :id")
-                .setParameter("id", id)
-                .getResultList();
-
-        return Objects.isNull(statuses) || statuses.isEmpty() ? false : true;
-    }
-
-
     @Transactional(rollbackFor = Exception.class)
     public WalletInfo getWalletInfoWithWalletNameAndCurrency(String walletName, String currencyName) {
-
-        loggger.info("\n\nDatabase: the wallet name {} and the currency name {} \n\n", walletName, currencyName);
 
         List<WalletInfo> walletInfos = sessionFactory.getCurrentSession()
                 .createQuery("from WalletInfo where name = :name and currency = :currency")

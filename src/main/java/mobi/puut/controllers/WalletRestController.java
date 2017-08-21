@@ -112,10 +112,10 @@ public class WalletRestController {
 
 
     // TODO
-    // write a RESTful method using the wallet id to get info from the status table
+    // write a RESTful method for the receiving operations
 
     // TODO
-    // write a RESTful method for the receiving operations
+    // write a RESTful method using the wallet id to get all the info's from the status table
 
     // TODO
     // get the list of the transactions for the particular user
@@ -164,7 +164,7 @@ public class WalletRestController {
     /**
      * generate the address from the provided wallet walletName
      * <p>
-     * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream1","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
+     * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream100","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
      *
      * @param createWalletWithNameAndCurrency is an entiry with the wallet name and the address
      * @return
