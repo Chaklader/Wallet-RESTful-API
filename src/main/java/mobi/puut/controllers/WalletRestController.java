@@ -1,6 +1,5 @@
 package mobi.puut.controllers;
 
-import mobi.puut.entities.SendMoney;
 import mobi.puut.entities.User;
 import mobi.puut.entities.WalletInfo;
 import mobi.puut.services.UserService;
@@ -205,7 +204,7 @@ public class WalletRestController {
      * <p>
      * <p>
      * the address provided is valid bitcoin testnet address to donate
-     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0.56","address":"mwCwTceJvYV27KXBc3NJZys6CjsgsoeHmf"}' http://localhost:8080/rest/sendMoney/1
+     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0","address":"mwCwTceJvYV27KXBc3NJZys6CjsgsoeHmf"}' http://localhost:8080/rest/sendMoney/4
      *
      * @param walletId  wallet Id from where we send the money
      * @param sendMoeny entity object retains the info such as external address and the amount of money to send out
@@ -582,7 +581,8 @@ public class WalletRestController {
 
 
     /*
-    *
+    * entity to create new wallets with the name and the currency
+    * server code will generate an address for the wallet
     * */
     static class CreateWalletWithNameAndCurrency {
 
@@ -591,7 +591,6 @@ public class WalletRestController {
         String currencyName;
 
         public CreateWalletWithNameAndCurrency(String walletName, String currencyName) {
-
             this.walletName = walletName;
             this.currencyName = currencyName;
         }
@@ -613,6 +612,41 @@ public class WalletRestController {
 
         public void setWalletName(String walletName) {
             this.walletName = walletName;
+        }
+    }
+
+
+    /*
+    * the entity for the sending money to the external party
+    * */
+    static class SendMoney {
+
+        String address;
+
+        String amount;
+
+        public SendMoney(String address, String amount) {
+            this.address = address;
+            this.amount = amount;
+        }
+
+        public SendMoney() {
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getAmount() {
+            return amount;
+        }
+
+        public void setAmount(String amount) {
+            this.amount = amount;
         }
     }
 }

@@ -150,12 +150,18 @@ public class WalletService {
     /**
      * get the wallet model with the provided ID
      *
-     * @param id
+     * @param walletId
      * @return
      */
-    public WalletModel getWalletModel(final Long id) {
-        WalletManager walletManager = getWalletManager(id);
+    public WalletModel getWalletModel(final Long walletId) {
+
+        WalletManager walletManager = getWalletManager(walletId);
         WalletModel model = walletManager == null ? null : walletManager.getModel();
+
+        if (Objects.isNull(model)) {
+            logger.info("Wallet with the Id {} is not available", walletId);
+        }
+
         return model;
     }
 

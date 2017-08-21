@@ -1,6 +1,5 @@
 package mobi.puut.controllers;
 
-import mobi.puut.entities.SendMoney;
 import mobi.puut.entities.User;
 import mobi.puut.entities.WalletInfo;
 import mobi.puut.services.UserService;
@@ -591,7 +590,6 @@ public class WalletRestController {
         String currencyName;
 
         public CreateWalletWithNameAndCurrency(String walletName, String currencyName) {
-
             this.walletName = walletName;
             this.currencyName = currencyName;
         }
@@ -613,6 +611,41 @@ public class WalletRestController {
 
         public void setWalletName(String walletName) {
             this.walletName = walletName;
+        }
+    }
+
+
+    /*
+    * the entity for the sending money to the external party
+    * */
+    static class SendMoney {
+
+        String address;
+
+        String amount;
+
+        public SendMoney(String address, String amount) {
+            this.address = address;
+            this.amount = amount;
+        }
+
+        public SendMoney() {
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getAmount() {
+            return amount;
+        }
+
+        public void setAmount(String amount) {
+            this.amount = amount;
         }
     }
 }
