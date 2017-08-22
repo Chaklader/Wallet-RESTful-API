@@ -1,41 +1,14 @@
 package mobi.puut.services;
 
-import java.util.List;
-import java.util.Objects;
-
-import mobi.puut.database.UserDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import mobi.puut.entities.User;
 
+import java.util.List;
 
-/**
- * Created by Chaklader on 6/19/17.
- */
-@Service("userService")
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    public UserDao userDAO;
+    List<User> getCurrentStatuses();
 
-    @Transactional(readOnly = true)
-    public List<User> getCurrentStatuses() {
-        return userDAO.getAllUsers();
-    }
+    void create(User user);
 
-    public void create(User user) {
-        userDAO.saveOrUpdate(user);
-    }
-
-    public List<User> getAllUsers() {
-        List<User> users = userDAO.getAllUsers();
-
-        if (Objects.isNull(users)) {
-            return null;
-        }
-        return users;
-    }
+    List<User> getAllUsers();
 }
-

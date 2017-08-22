@@ -115,11 +115,11 @@ public class WalletRestController {
      * get the wallet the id or address with the currency name and the wallet name
      * <p>
      * returns the Long value for the walletInfo if no address requirement is asked
-     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut | json
+     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/Bitcoin/puut2 | json
      * <p>
      * <p>
      * returns the String value for the walletInfo address if the address required is true
-     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut/true | json
+     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/Bitcoin/puut2/true | json
      *
      * @param currencyName
      * @param walletName
@@ -152,10 +152,11 @@ public class WalletRestController {
 
     // public ResponseEntity<String> generateAddress(@RequestParam("walletName") String walletName, @RequestParam("currencyName") String currencyName)
     // cURL request: curl -X POST -d "walletName=my-cool-wallet&currencyName=ETH" http://localhost:8080/generateAddress
+
     /**
      * generate the address from the provided wallet walletName and currency
      * <p>
-     * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream100","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
+     * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream15","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
      *
      * @param createWalletWithNameAndCurrency is an entiry with the wallet name and the address
      * @return
@@ -195,7 +196,7 @@ public class WalletRestController {
      * <p>
      * <p>
      * the address provided is valid bitcoin testnet address to donate
-     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0","address":"mwCwTceJvYV27KXBc3NJZys6CjsgsoeHmf"}' http://localhost:8080/rest/sendMoney/4
+     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0","address":"mwCwTceJvYV27KXBc3NJZys6CjsgsoeHmf"}' http://localhost:8080/rest/sendMoney/5
      *
      * @param walletId  wallet Id from where we send the money
      * @param sendMoeny entity object retains the info such as external address and the amount of money to send out
@@ -230,7 +231,7 @@ public class WalletRestController {
 
     /**
      * delete a wallet with the Id
-     * curl -i -X DELETE http://localhost:8080/rest/delete/4
+     * curl -i -X DELETE http://localhost:8080/rest/delete/5
      *
      * @param walletInfoId
      * @return
@@ -650,6 +651,11 @@ public class WalletRestController {
 
     // TODO
     // get the list of the transactions for the particular user
+
+    // TODO
+    // Wire out every info of an wallet
+    // Update the delete method to provide an option for the hard delete
+    // so, even if the wallet has child tables e.g Status, everything will be deleted
 }
 
 
