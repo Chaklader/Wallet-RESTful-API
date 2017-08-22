@@ -2,8 +2,8 @@ package mobi.puut.controllers;
 
 import mobi.puut.entities.User;
 import mobi.puut.entities.WalletInfo;
-import mobi.puut.services.UserService;
-import mobi.puut.services.WalletService;
+import mobi.puut.services.IUserService;
+import mobi.puut.services.IWalletService;
 import org.bitcoinj.core.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Created by Chaklader on 6/24/17.
+ * Created by Chaklader on 8/2/17.
  */
 @RestController
 @RequestMapping("/rest")
@@ -28,10 +28,10 @@ public class WalletRestController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private WalletService walletService;
+    private IWalletService IWalletService;
 
     @Autowired
-    private UserService userService;
+    private IUserService IUserService;
 
 
     /**
@@ -44,7 +44,7 @@ public class WalletRestController {
     @GetMapping(value = "/wallets")
     public ResponseEntity<List<WalletInfoWrapper>> getAllWalletInfo() {
 
-        List<WalletInfo> walletInfos = walletService.getAllWallets();
+        List<WalletInfo> walletInfos = IWalletService.getAllWallets();
 
         if (Objects.isNull(walletInfos)) {
             return new ResponseEntity<List<WalletInfoWrapper>>(HttpStatus.NO_CONTENT);
@@ -68,7 +68,7 @@ public class WalletRestController {
     @GetMapping(value = "/users")
     public ResponseEntity<List<UserWrapper>> getAllUsers() {
 
-        List<User> users = userService.getAllUsers();
+        List<User> users = IUserService.getAllUsers();
 
         if (Objects.isNull(users)) {
             return new ResponseEntity<List<UserWrapper>>(HttpStatus.NO_CONTENT);
@@ -115,11 +115,11 @@ public class WalletRestController {
      * get the wallet the id or address with the currency name and the wallet name
      * <p>
      * returns the Long value for the walletInfo if no address requirement is asked
-     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut | json
+     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/Bitcoin/puut2 | json
      * <p>
      * <p>
      * returns the String value for the walletInfo address if the address required is true
-     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/bitcoin/puut/true | json
+     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/Bitcoin/puut2/true | json
      *
      * @param currencyName
      * @param walletName
@@ -132,7 +132,7 @@ public class WalletRestController {
 
         logger.info("The currency name is {} and wallet name is {}", currencyName, walletName);
 
-        WalletInfo walletInfo = walletService.getWalletInfoWithCurrencyAndWalletName(walletName, currencyName);
+        WalletInfo walletInfo = IWalletService.getWalletInfoWithCurrencyAndWalletName(walletName, currencyName);
 
         if (Objects.isNull(walletInfo)) {
             return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
@@ -156,7 +156,7 @@ public class WalletRestController {
     /**
      * generate the address from the provided wallet walletName and currency
      * <p>
-     * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream100","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
+     * curl -H "Content-Type: application/json" -X POST -d '{"walletName":"Icecream15","currencyName":"Bitcoin"}' http://localhost:8080/rest/generateAddress
      *
      * @param createWalletWithNameAndCurrency is an entiry with the wallet name and the address
      * @return
@@ -175,7 +175,7 @@ public class WalletRestController {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_ACCEPTABLE);
         }
 
-        WalletInfo walletInfo = walletService.generateAddress(walletName, currencyName);
+        WalletInfo walletInfo = IWalletService.generateAddress(walletName, currencyName);
 
         if (Objects.isNull(walletInfo)) {
             return new ResponseEntity<WalletInfoWrapper>(HttpStatus.NOT_ACCEPTABLE);
@@ -196,7 +196,7 @@ public class WalletRestController {
      * <p>
      * <p>
      * the address provided is valid bitcoin testnet address to donate
-     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0","address":"mwCwTceJvYV27KXBc3NJZys6CjsgsoeHmf"}' http://localhost:8080/rest/sendMoney/4
+     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0","address":"mwCwTceJvYV27KXBc3NJZys6CjsgsoeHmf"}' http://localhost:8080/rest/sendMoney/5
      *
      * @param walletId  wallet Id from where we send the money
      * @param sendMoeny entity object retains the info such as external address and the amount of money to send out
@@ -212,7 +212,7 @@ public class WalletRestController {
             return new ResponseEntity<WalletModelWrapper>(HttpStatus.NOT_FOUND);
         }
 
-        walletModel = walletService.sendMoney(walletId, sendMoeny.getAmount(), sendMoeny.getAddress());
+        walletModel = IWalletService.sendMoney(walletId, sendMoeny.getAmount(), sendMoeny.getAddress());
 
         // The wallet is not able to send money
         if (Objects.isNull(walletModel)) {
@@ -231,7 +231,7 @@ public class WalletRestController {
 
     /**
      * delete a wallet with the Id
-     * curl -i -X DELETE http://localhost:8080/rest/delete/4
+     * curl -i -X DELETE http://localhost:8080/rest/delete/5
      *
      * @param walletInfoId
      * @return
@@ -248,7 +248,7 @@ public class WalletRestController {
         }
 
         // it wont delete the wallet of any transaction is initiated
-        walletService.deleteWalletInfoById(walletInfoId);
+        IWalletService.deleteWalletInfoById(walletInfoId);
 
         WalletInfoWrapper walletInfoWrapper = new WalletInfoWrapper();
 
@@ -334,7 +334,7 @@ public class WalletRestController {
     @RequestMapping("/walletsNumber")
     public String getWalletsCount() {
 
-        List<WalletInfo> wallets = walletService.getAllWallets();
+        List<WalletInfo> wallets = IWalletService.getAllWallets();
 
         if (Objects.isNull(wallets) || wallets.isEmpty()) {
             return "No wallet found";
@@ -399,7 +399,7 @@ public class WalletRestController {
      * @return
      */
     private WalletModel getWalletModelByWalletId(Long id) {
-        return walletService.getWalletModel(id);
+        return IWalletService.getWalletModel(id);
     }
 
     /**
@@ -409,7 +409,7 @@ public class WalletRestController {
      * @return
      */
     private WalletInfo getWalletInfo(Long id) {
-        return walletService.getWalletInfo(id);
+        return IWalletService.getWalletInfo(id);
     }
 
 
@@ -623,6 +623,7 @@ public class WalletRestController {
         }
 
         public SendMoney() {
+
         }
 
         public String getAddress() {
@@ -651,6 +652,11 @@ public class WalletRestController {
 
     // TODO
     // get the list of the transactions for the particular user
+
+    // TODO
+    // Wire out every info of an wallet
+    // Update the delete method to provide an option for the hard delete
+    // so, even if the wallet has child tables e.g Status, everything will be deleted
 }
 
 

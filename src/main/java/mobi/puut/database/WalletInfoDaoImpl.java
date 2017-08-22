@@ -15,13 +15,13 @@ import java.util.Objects;
  * Created by Chaklader on 6/24/17.
  */
 @Repository
-public class WalletInfoDaoImpl implements WalletInfoDao {
+public class WalletInfoDaoImpl implements IWalletInfoDao {
 
     // provide a logger for the class
     private final Logger loggger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    StatusDao statusDao;
+    IStatusDao IStatusDao;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -71,7 +71,7 @@ public class WalletInfoDaoImpl implements WalletInfoDao {
 
         // transaction is recored in the status table with the wallet Id
         // we cant delete the WalletInfo entity as being used foreign key in the Status table
-        if (statusDao.getStatusRetentionInfoByWalletId(walletId)) {
+        if (IStatusDao.getStatusRetentionInfoByWalletId(walletId)) {
             loggger.info("\n\nUnable to delete the wallet with id {} as being used foregin key " +
                     "in the Status table\n\n", walletId);
             return;

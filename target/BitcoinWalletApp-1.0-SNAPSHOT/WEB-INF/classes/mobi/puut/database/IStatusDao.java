@@ -4,7 +4,7 @@ import mobi.puut.entities.Status;
 
 import java.util.List;
 
-public interface StatusDao {
+public interface IStatusDao {
 
     Status saveStatus(final Status status);
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-public interface WalletService {
+public interface IWalletService {
 
     List<Status> getWalletStatuses(final Long id);
 

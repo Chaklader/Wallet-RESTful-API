@@ -30,29 +30,29 @@ import static mobi.puut.controllers.WalletManager.networkParameters;
  * Created by Chaklader on 6/24/17.
  */
 @Service("walletService")
-public class WalletServiceImpl implements WalletService {
+public class WalletServiceImpl implements IWalletService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private UserDao userDao;
+    private IUserDao IUserDao;
 
     @Autowired
-    private StatusDao statusDao;
+    private IStatusDao IStatusDao;
 
     @Autowired
-    private WalletInfoDao walletInfoDao;
+    private IWalletInfoDao IWalletInfoDao;
 
     private Map<String, WalletManager> genWalletMap = new ConcurrentHashMap<>();
 
     private Map<Long, WalletManager> walletMangersMap = new ConcurrentHashMap<>();
 
     public List<Status> getWalletStatuses(final Long id) {
-        return statusDao.getByWalletId(id);
+        return IStatusDao.getByWalletId(id);
     }
 
     public WalletInfo getWalletInfo(Long walletId) {
-        return walletInfoDao.getById(walletId);
+        return IWalletInfoDao.getById(walletId);
     }
 
     /**
@@ -61,7 +61,7 @@ public class WalletServiceImpl implements WalletService {
     public List<WalletInfo> getAllWallets() {
 
         try {
-            return walletInfoDao.getAllWallets();
+            return IWalletInfoDao.getAllWallets();
         } catch (HibernateException e) {
             e.printStackTrace();
             return Collections.emptyList();
@@ -79,7 +79,7 @@ public class WalletServiceImpl implements WalletService {
      */
     public synchronized WalletInfo generateAddress(final String walletName, String currencyName) {
 
-        WalletInfo walletInfo = walletInfoDao.getWalletInfoWithWalletNameAndCurrency(walletName, currencyName);
+        WalletInfo walletInfo = IWalletInfoDao.getWalletInfoWithWalletNameAndCurrency(walletName, currencyName);
 
         if (walletInfo == null) {
 
@@ -142,7 +142,7 @@ public class WalletServiceImpl implements WalletService {
 
     public WalletInfo getWalletInfoWithCurrencyAndWalletName(String walletName, String currencyName) {
 
-        return walletInfoDao.getWalletInfoWithWalletNameAndCurrency(walletName, currencyName);
+        return IWalletInfoDao.getWalletInfoWithWalletNameAndCurrency(walletName, currencyName);
     }
 
     /**
@@ -282,7 +282,7 @@ public class WalletServiceImpl implements WalletService {
         WalletManager walletManager = walletMangersMap.get(id);
 
         if (walletManager == null) {
-            WalletInfo walletInfo = walletInfoDao.getById(id);
+            WalletInfo walletInfo = IWalletInfoDao.getById(id);
             if (walletInfo != null) {
                 String name = walletInfo.getName();
                 walletManager = WalletManager.setupWallet(name);
@@ -297,7 +297,7 @@ public class WalletServiceImpl implements WalletService {
      */
     protected User getCurrentUser() {
 
-        User user = userDao.getById(1); //TODO
+        User user = IUserDao.getById(1); //TODO
         return user;
     }
 
@@ -309,7 +309,7 @@ public class WalletServiceImpl implements WalletService {
      * @return
      */
     protected WalletInfo createWalletInfo(final String walletName, final String currency, final String address) {
-        return walletInfoDao.create(walletName, currency, address);
+        return IWalletInfoDao.create(walletName, currency, address);
     }
 
     /**
@@ -332,10 +332,10 @@ public class WalletServiceImpl implements WalletService {
         status.setWallet_id(walletId);
         status.setTransaction(message.length() > 90 ? message.substring(0, 89) : message);
         status.setBalance(balance.getValue());
-        return statusDao.saveStatus(status);
+        return IStatusDao.saveStatus(status);
     }
 
     public void deleteWalletInfoById(Long id) {
-        walletInfoDao.deleteWalletInfoByWalletId(id);
+        IWalletInfoDao.deleteWalletInfoByWalletId(id);
     }
 }
