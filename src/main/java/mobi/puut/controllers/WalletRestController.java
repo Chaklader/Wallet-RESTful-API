@@ -151,6 +151,8 @@ public class WalletRestController {
     }
 
 
+    // public ResponseEntity<String> generateAddress(@RequestParam("walletName") String walletName, @RequestParam("currencyName") String currencyName)
+    // cURL request: curl -X POST -d "walletName=my-cool-wallet&currencyName=ETH" http://localhost:8080/generateAddress
     /**
      * generate the address from the provided wallet walletName and currency
      * <p>
