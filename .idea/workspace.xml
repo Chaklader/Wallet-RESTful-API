@@ -31,8 +31,8 @@
       <file leaf-file-name="WalletRestController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="162" column="6" lean-forward="true" selection-start-line="162" selection-start-column="6" selection-end-line="162" selection-end-column="6" />
+            <state relative-caret-position="273">
+              <caret line="159" column="6" lean-forward="true" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -542,12 +542,12 @@
       <workItem from="1503294681826" duration="4770000" />
       <workItem from="1503300543540" duration="726000" />
       <workItem from="1503332810430" duration="1896000" />
-      <workItem from="1503380142493" duration="122000" />
+      <workItem from="1503380142493" duration="747000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78569000" />
+    <option name="totallyTimeSpent" value="79194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -893,8 +893,8 @@
         <state relative-caret-position="77">
           <caret line="120" column="28" lean-forward="false" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="28" />
           <folding>
-            <element signature="e#3049#3050#0" expanded="true" />
-            <element signature="e#3103#3104#0" expanded="true" />
+            <element signature="e#3049#3050#0" expanded="false" />
+            <element signature="e#3103#3104#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -927,7 +927,7 @@
         <state relative-caret-position="195">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -942,8 +942,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="162" column="6" lean-forward="true" selection-start-line="162" selection-start-column="6" selection-end-line="162" selection-end-column="6" />
+        <state relative-caret-position="273">
+          <caret line="159" column="6" lean-forward="true" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

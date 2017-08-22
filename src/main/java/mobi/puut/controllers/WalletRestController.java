@@ -91,7 +91,6 @@ public class WalletRestController {
      * @return
      */
     @GetMapping(value = "/wallets/{walletId:[\\d]+}")
-//    @GetMapping(value = "/wallets/{walletId}")
     public ResponseEntity<WalletInfoWrapper> getWalletById(@PathVariable("walletId") long walletId) {
 
         logger.info("Get the wallet with Id =  {}", walletId);
