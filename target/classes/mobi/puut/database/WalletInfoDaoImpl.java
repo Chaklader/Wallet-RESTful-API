@@ -29,8 +29,9 @@ public class WalletInfoDaoImpl implements IWalletInfoDao {
     @Transactional(rollbackFor = Exception.class)
     public List<WalletInfo> getAllWallets() {
 
-        return sessionFactory.getCurrentSession()
-                .createQuery("from WalletInfo").getResultList();
+//        return sessionFactory.getCurrentSession()
+//                .createQuery("from WalletInfo").getResultList();
+        return sessionFactory.getCurrentSession().createCriteria(WalletInfo.class).list();
     }
 
     @Transactional(rollbackFor = Exception.class)

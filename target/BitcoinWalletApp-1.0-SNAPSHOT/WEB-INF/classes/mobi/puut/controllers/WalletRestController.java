@@ -125,6 +125,7 @@ public class WalletRestController {
      * @param walletName
      * @return
      */
+    // this method is not working
     @GetMapping(value = "wallets/{currencyName}/{walletName}", produces = "text/html")
     public ResponseEntity<?> getAddressWithCurrencyAndWalletName(@PathVariable("currencyName") String currencyName,
                                                                  @PathVariable("walletName") String walletName,

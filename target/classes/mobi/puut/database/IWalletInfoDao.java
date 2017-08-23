@@ -1,8 +1,8 @@
 package mobi.puut.database;
 
 import mobi.puut.entities.WalletInfo;
-
 import java.util.List;
+
 
 public interface IWalletInfoDao {
 

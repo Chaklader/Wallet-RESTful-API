@@ -7,18 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ceedfe0a-cfb0-4383-977e-18abdcfb7aea" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/database/StatusDao.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/database/IStatusDao.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/database/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/database/IUserDao.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDao.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/database/IWalletInfoDao.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/services/IUserService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletService.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/services/IWalletService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/database/StatusDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/database/StatusDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/database/UserDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/database/UserDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/database/IWalletInfoDao.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/database/IWalletInfoDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/services/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/services/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,12 +36,21 @@
       <file leaf-file-name="WalletRestController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+            <state relative-caret-position="144">
+              <caret line="39" column="56" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="56" />
               <folding>
-                <element signature="e#19640#19641#0" expanded="true" />
-                <element signature="e#19684#19685#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WalletInfoDaoImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDaoImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,6 +86,7 @@
       <find>public</find>
       <find>StatusDao</find>
       <find>RestController</find>
+      <find>&lt;?&gt;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,8 +128,9 @@
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/database/StatusDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/services/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/services/WalletServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mobi/puut/database/IWalletInfoDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDaoImpl.java" />
       </list>
     </option>
   </component>
@@ -164,7 +167,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="781" />
@@ -187,10 +190,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -567,12 +570,15 @@
       <workItem from="1503300543540" duration="726000" />
       <workItem from="1503332810430" duration="1896000" />
       <workItem from="1503380142493" duration="1560000" />
-      <workItem from="1503394949408" duration="4909000" />
+      <workItem from="1503394949408" duration="5444000" />
+      <workItem from="1503453386630" duration="20000" />
+      <workItem from="1503483086939" duration="53000" />
+      <workItem from="1503505866385" duration="96000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84916000" />
+    <option name="totallyTimeSpent" value="85620000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -584,7 +590,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="781" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="803" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -599,20 +605,19 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39941692" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3309038" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33050847" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4606414" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.460452" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25364432" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25282487" sideWeight="0.49713877" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29756796" sideWeight="0.508658" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34120172" sideWeight="0.49134198" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35622317" sideWeight="0.49134198" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35714287" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -620,6 +625,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35714287" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,8 +649,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#19640#19641#0" expanded="true" />
-            <element signature="e#19684#19685#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -654,8 +659,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#19640#19641#0" expanded="true" />
-            <element signature="e#19684#19685#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -665,8 +669,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#19640#19641#0" expanded="true" />
-            <element signature="e#19684#19685#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -676,8 +679,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#19640#19641#0" expanded="true" />
-            <element signature="e#19684#19685#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -687,8 +689,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#19640#19641#0" expanded="true" />
-            <element signature="e#19684#19685#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -901,16 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/IWalletInfoDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="44" lean-forward="true" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/IUserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -921,28 +912,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/IStatusDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="54" lean-forward="false" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/UserDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -979,13 +952,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/IStatusDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/IWalletInfoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/database/WalletInfoDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mobi/puut/controllers/WalletRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        <state relative-caret-position="144">
+          <caret line="39" column="56" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="56" />
           <folding>
-            <element signature="e#19640#19641#0" expanded="true" />
-            <element signature="e#19684#19685#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
