@@ -20,7 +20,6 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     public IUserDao IUserDAO;
 
-    @Transactional(readOnly = true)
     public List<User> getCurrentStatuses() {
         return IUserDAO.getAllUsers();
     }

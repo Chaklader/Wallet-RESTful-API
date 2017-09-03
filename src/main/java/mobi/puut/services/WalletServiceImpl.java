@@ -165,7 +165,6 @@ public class WalletServiceImpl implements IWalletService {
 
     /**
      * Send money from the wallet using the wallet name, address and amount
-     *
      * @param walletId takes the wallet name
      * @param amount   takes the sending amount
      * @param address  takes address to send the money
@@ -175,6 +174,7 @@ public class WalletServiceImpl implements IWalletService {
 
         User user = getCurrentUser();
         WalletModel model = null;
+        
         WalletManager walletManager = getWalletManager(walletId);
 
         if (walletManager != null) {

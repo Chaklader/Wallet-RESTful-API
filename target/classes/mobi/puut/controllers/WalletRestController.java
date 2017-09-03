@@ -115,11 +115,11 @@ public class WalletRestController {
      * get the wallet the id or address with the currency name and the wallet name
      * <p>
      * returns the Long value for the walletInfo if no address requirement is asked
-     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/Bitcoin/puut2 | json
+     * curl -i -H "Accept: application/json" http://localhost:8080/rest/wallets/Bitcoin/puut2 | json
      * <p>
      * <p>
      * returns the String value for the walletInfo address if the address required is true
-     * curl -i -H "Accept: text/html" http://localhost:8080/rest/wallets/Bitcoin/puut2/true | json
+     * curl -X GET "Accept: text/html" http://localhost:8080/rest/wallets/Bitcoin/puut2/true | json
      *
      * @param currencyName
      * @param walletName
@@ -197,7 +197,7 @@ public class WalletRestController {
      * <p>
      * <p>
      * the address provided is valid bitcoin testnet address to donate
-     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0","address":"mwCwTceJvYV27KXBc3NJZys6CjsgsoeHmf"}' http://localhost:8080/rest/sendMoney/5
+     * curl -H "Content-Type: application/json" -X POST -d '{"amount":"0","address":"mwCwTceJvYV27KXBc3NJZys6CjsgsoeHmf"}' http://localhost:8080/rest/sendMoney/10
      *
      * @param walletId  wallet Id from where we send the money
      * @param sendMoeny entity object retains the info such as external address and the amount of money to send out
